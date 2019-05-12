@@ -116,9 +116,8 @@
                 var has_external_referrer = document.referrer && !/\.deriv\.com/.test(document.referrer);
                 var has_utm_source        = /utm_source/.test(search);
                 var utm_source            = has_external_referrer && !has_utm_source ? ((search ? '&' : '?') + 'utm_source=' + new URL(document.referrer).hostname) : '';
-                var is_branch             = /br_/.test(window.location.pathname);
-                var root_path             = is_branch ? window.location.pathname : '';
-                window.location.href = root_path + (lang || 'en').toLowerCase() + '/trade' + search + utm_source;
+
+                window.location.href = (lang || 'en').toLowerCase() + '/trade' + search + utm_source;
             }
 
             if (document.referrer) {
