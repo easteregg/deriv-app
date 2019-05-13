@@ -12283,6 +12283,7 @@ var initRoutesConfig = function initRoutesConfig() {
         path: _Constants.routes.reports,
         component: Reports,
         is_authenticated: true,
+        title: (0, _localize.localize)('Reports'),
         routes: [{ path: _Constants.routes.positions, component: OpenPositions, title: (0, _localize.localize)('Open Positions'), icon_component: _iconOpenPositions.IconOpenPositions, default: true }, { path: _Constants.routes.profit, component: ProfitTable, title: (0, _localize.localize)('Profit Table'), icon_component: _iconProfitTable.IconProfitTable }, { path: _Constants.routes.statement, component: Statement, title: (0, _localize.localize)('Statement'), icon_component: _iconStatement.IconStatement }]
     }, { path: _Constants.routes.trade, component: _Trading2.default, title: (0, _localize.localize)('Trade'), exact: true }, {
         path: _Constants.routes.settings,
