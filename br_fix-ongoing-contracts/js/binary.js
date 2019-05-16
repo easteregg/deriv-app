@@ -3674,7 +3674,7 @@ var ErrorBoundary = function (_React$Component) {
 
         _this.componentDidCatch = function (error, info) {
             // eslint-disable-next-line no-underscore-dangle
-            window.__response_error = JSON.parse(JSON.stringify(_this.props.root_store));
+            window.__response_error = _this.props.root_store;
             _this.setState({
                 hasError: true,
                 error: error,
@@ -3745,7 +3745,12 @@ var _localize3 = _interopRequireDefault(_localize2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ErrorComponent = function ErrorComponent(_ref) {
-    var message = _ref.message;
+    var header = _ref.header,
+        message = _ref.message,
+        redirect_label = _ref.redirect_label,
+        redirectOnClick = _ref.redirectOnClick,
+        _ref$should_show_refr = _ref.should_show_refresh,
+        should_show_refresh = _ref$should_show_refr === undefined ? true : _ref$should_show_refr;
 
     var msg = '';
     if ((typeof message === 'undefined' ? 'undefined' : _typeof(message)) === 'object') {
@@ -3756,13 +3761,13 @@ var ErrorComponent = function ErrorComponent(_ref) {
     } else {
         msg = message;
     }
-    var refresh_message = (0, _localize.localize)('Please refresh this page to continue.');
+    var refresh_message = should_show_refresh ? (0, _localize.localize)('Please refresh this page to continue.') : '';
     return _react2.default.createElement(_PageError2.default, {
-        header: (0, _localize.localize)('Oops, something went wrong.'),
+        header: header || (0, _localize.localize)('Oops, something went wrong.'),
         messages: msg ? [msg, refresh_message] : [(0, _localize.localize)('Sorry, an error occured while processing your request.'), refresh_message],
         redirect_url: _Constants.routes.trade,
-        redirect_label: (0, _localize.localize)('Refresh'),
-        buttonOnClick: function buttonOnClick() {
+        redirect_label: redirect_label || (0, _localize.localize)('Refresh'),
+        buttonOnClick: redirectOnClick || function () {
             return location.reload();
         }
     });
@@ -27381,6 +27386,10 @@ var WS = function () {
         return _socket_base2.default.send({ sell: contract_id, price: price });
     };
 
+    var residenceList = function residenceList() {
+        return _socket_base2.default.send({ residence_list: 1 });
+    };
+
     var sellExpired = function sellExpired() {
         return _socket_base2.default.send({ sell_expired: 1 });
     };
@@ -27453,6 +27462,7 @@ var WS = function () {
         payoutCurrencies: payoutCurrencies,
         profitTable: profitTable,
         proposalOpenContract: proposalOpenContract,
+        residenceList: residenceList,
         sell: sell,
         sellExpired: sellExpired,
         sendRequest: sendRequest,
@@ -31000,6 +31010,79 @@ exports.default = getValidationRules;
 
 /***/ }),
 
+/***/ "./src/javascript/app/Stores/Modules/Trading/Helpers/active-symbols.js":
+/*!*****************************************************************************!*\
+  !*** ./src/javascript/app/Stores/Modules/Trading/Helpers/active-symbols.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showUnavailableLocationError = exports.pickDefaultSymbol = undefined;
+
+var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+
+var _Services = __webpack_require__(/*! ../../../../Services */ "./src/javascript/app/Services/index.js");
+
+var _localize = __webpack_require__(/*! ../../../../../_common/localize */ "./src/javascript/_common/localize.js");
+
+var _login = __webpack_require__(/*! ../../../../../_common/base/login */ "./src/javascript/_common/base/login.js");
+
+var _socket_base = __webpack_require__(/*! ../../../../../_common/base/socket_base */ "./src/javascript/_common/base/socket_base.js");
+
+var _socket_base2 = _interopRequireDefault(_socket_base);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var pickDefaultSymbol = exports.pickDefaultSymbol = function pickDefaultSymbol() {
+    var active_symbols = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+    if (!active_symbols.length) return '';
+    return active_symbols.filter(function (symbol_info) {
+        return (/major_pairs|random_index/.test(symbol_info.submarket)
+        );
+    })[0].symbol;
+};
+
+var showUnavailableLocationError = exports.showUnavailableLocationError = (0, _mobx.flow)( /*#__PURE__*/regeneratorRuntime.mark(function _callee(showError) {
+    var website_status, residence_list, clients_country_code, clients_country_text;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    _context.next = 2;
+                    return _socket_base2.default.wait('website_status');
+
+                case 2:
+                    website_status = _context.sent;
+                    _context.next = 5;
+                    return _Services.WS.residenceList();
+
+                case 5:
+                    residence_list = _context.sent;
+                    clients_country_code = website_status.website_status.clients_country;
+                    clients_country_text = (residence_list.residence_list.find(function (obj_country) {
+                        return obj_country.value === clients_country_code;
+                    }) || {}).text;
+
+
+                    showError((0, _localize.localize)('If you have an account, log in to continue.'), clients_country_text ? (0, _localize.localize)('Sorry, this app is unavailable in [_1].', clients_country_text) : (0, _localize.localize)('Sorry, this app is unavailable in your current location.'), (0, _localize.localize)('Log in'), _login.redirectToLogin, false);
+
+                case 9:
+                case 'end':
+                    return _context.stop();
+            }
+        }
+    }, _callee, this);
+}));
+
+/***/ }),
+
 /***/ "./src/javascript/app/Stores/Modules/Trading/Helpers/allow-equals.js":
 /*!***************************************************************************!*\
   !*** ./src/javascript/app/Stores/Modules/Trading/Helpers/allow-equals.js ***!
@@ -31176,10 +31259,11 @@ var ContractType = function () {
 
     var buildContractTypesConfig = function buildContractTypesConfig(symbol) {
         return _Services.WS.contractsFor(symbol).then(function (r) {
-            has_only_forward_starting_contracts = !r.contracts_for.available.find(function (contract) {
+            var has_contracts = (0, _utility.getPropertyValue)(r, ['contracts_for']);
+            has_only_forward_starting_contracts = has_contracts && !r.contracts_for.available.find(function (contract) {
                 return contract.start_type !== 'forward';
             });
-            if (has_only_forward_starting_contracts) return;
+            if (!has_contracts || has_only_forward_starting_contracts) return;
             var contract_categories = (0, _contract.getContractCategoriesConfig)();
             contract_types = (0, _contract.getContractTypesConfig)();
 
@@ -32203,31 +32287,6 @@ var isSessionAvailable = exports.isSessionAvailable = function isSessionAvailabl
 
 /***/ }),
 
-/***/ "./src/javascript/app/Stores/Modules/Trading/Helpers/symbol.js":
-/*!*********************************************************************!*\
-  !*** ./src/javascript/app/Stores/Modules/Trading/Helpers/symbol.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var pickDefaultSymbol = exports.pickDefaultSymbol = function pickDefaultSymbol() {
-    var active_symbols = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-    if (!active_symbols.length) return '';
-    return active_symbols.filter(function (symbol_info) {
-        return (/major_pairs|random_index/.test(symbol_info.submarket)
-        );
-    })[0].symbol;
-};
-
-/***/ }),
-
 /***/ "./src/javascript/app/Stores/Modules/Trading/trade-store.js":
 /*!******************************************************************!*\
   !*** ./src/javascript/app/Stores/Modules/Trading/trade-store.js ***!
@@ -32287,6 +32346,8 @@ var _validationRules = __webpack_require__(/*! ./Constants/validation-rules */ "
 
 var _validationRules2 = _interopRequireDefault(_validationRules);
 
+var _activeSymbols = __webpack_require__(/*! ./Helpers/active-symbols */ "./src/javascript/app/Stores/Modules/Trading/Helpers/active-symbols.js");
+
 var _allowEquals = __webpack_require__(/*! ./Helpers/allow-equals */ "./src/javascript/app/Stores/Modules/Trading/Helpers/allow-equals.js");
 
 var _chart = __webpack_require__(/*! ./Helpers/chart */ "./src/javascript/app/Stores/Modules/Trading/Helpers/chart.js");
@@ -32300,8 +32361,6 @@ var _duration = __webpack_require__(/*! ./Helpers/duration */ "./src/javascript/
 var _process = __webpack_require__(/*! ./Helpers/process */ "./src/javascript/app/Stores/Modules/Trading/Helpers/process.js");
 
 var _proposal = __webpack_require__(/*! ./Helpers/proposal */ "./src/javascript/app/Stores/Modules/Trading/Helpers/proposal.js");
-
-var _symbol2 = __webpack_require__(/*! ./Helpers/symbol */ "./src/javascript/app/Stores/Modules/Trading/Helpers/symbol.js");
 
 var _barriers = __webpack_require__(/*! ../SmartChart/Constants/barriers */ "./src/javascript/app/Stores/Modules/SmartChart/Constants/barriers.js");
 
@@ -32552,9 +32611,24 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                             case 5:
                                 active_symbols = _context2.sent;
 
-                                if (!active_symbols.active_symbols || active_symbols.active_symbols.length === 0) {
-                                    this.root_store.common.showError((0, _localize.localize)('Trading is unavailable at this time.'));
+                                if (!active_symbols.error) {
+                                    _context2.next = 11;
+                                    break;
                                 }
+
+                                this.root_store.common.showError((0, _localize.localize)('Trading is unavailable at this time.'));
+                                return _context2.abrupt('return');
+
+                            case 11:
+                                if (!(!active_symbols.active_symbols || !active_symbols.active_symbols.length)) {
+                                    _context2.next = 14;
+                                    break;
+                                }
+
+                                (0, _activeSymbols.showUnavailableLocationError)(this.root_store.common.showError);
+                                return _context2.abrupt('return');
+
+                            case 14:
 
                                 // Checks for finding out that the current account has access to the defined symbol in quersy string or not.
                                 is_invalid_symbol = !!query_string_values.symbol && !active_symbols.active_symbols.find(function (s) {
@@ -32568,7 +32642,7 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                                         message: (0, _localize.localize)('Certain trade parameters have been changed due to your account settings.'),
                                         type: 'info'
                                     });
-                                    _urlHelper2.default.setQueryParam({ 'symbol': (0, _symbol2.pickDefaultSymbol)(active_symbols.active_symbols) });
+                                    _urlHelper2.default.setQueryParam({ 'symbol': (0, _activeSymbols.pickDefaultSymbol)(active_symbols.active_symbols) });
                                     query_string_values = this.updateQueryString();
                                 }
 
@@ -32581,16 +32655,16 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                                 }
 
                                 if (this.symbol) {
-                                    _context2.next = 14;
+                                    _context2.next = 21;
                                     break;
                                 }
 
-                                _context2.next = 14;
+                                _context2.next = 21;
                                 return this.processNewValuesAsync(_extends({
-                                    symbol: (0, _symbol2.pickDefaultSymbol)(active_symbols.active_symbols)
+                                    symbol: (0, _activeSymbols.pickDefaultSymbol)(active_symbols.active_symbols)
                                 }, query_string_values));
 
-                            case 14:
+                            case 21:
 
                                 if (this.symbol) {
                                     _contractType2.default.buildContractTypesConfig(query_string_values.symbol || this.symbol).then((0, _mobx.action)(_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -32610,7 +32684,7 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                                     }))));
                                 }
 
-                            case 15:
+                            case 22:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -34466,6 +34540,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _dec, _dec2, _dec3, _dec4, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
@@ -34570,16 +34646,25 @@ var CommonStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 
         key: 'setError',
         value: function setError(has_error, error) {
             this.has_error = has_error;
-            this.error = {
-                type: error ? error.type : 'info',
-                message: error ? error.message : ''
-            };
+            this.error = _extends({
+                type: error ? error.type : 'info'
+            }, error && {
+                header: error.header,
+                message: error.message,
+                redirect_label: error.redirect_label,
+                redirectOnClick: error.redirectOnClick,
+                should_show_refresh: error.should_show_refresh
+            });
         }
     }, {
         key: 'showError',
-        value: function showError(message) {
+        value: function showError(message, header, redirect_label, redirectOnClick, should_show_refresh) {
             this.setError(true, {
+                header: header,
                 message: message,
+                redirect_label: redirect_label,
+                redirectOnClick: redirectOnClick,
+                should_show_refresh: should_show_refresh,
                 type: 'error'
             });
         }
@@ -36636,7 +36721,7 @@ var binary_desktop_app_id = 14473;
 
 var getAppId = function getAppId() {
     var app_id = null;
-    var user_app_id = '17036'; // you can insert Application ID of your registered application here
+    var user_app_id = '17037'; // you can insert Application ID of your registered application here
     var config_app_id = window.localStorage.getItem('config.app_id');
     if (config_app_id) {
         app_id = config_app_id;
