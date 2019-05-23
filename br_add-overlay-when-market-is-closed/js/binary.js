@@ -32369,7 +32369,7 @@ var isMarketClosed = exports.isMarketClosed = function isMarketClosed() {
     var active_symbols = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var symbol = arguments[1];
 
-    if (!active_symbols.length) return true;
+    if (!active_symbols.length) return false;
     return active_symbols.filter(function (x) {
         return x.symbol === symbol;
     })[0] ? !active_symbols.filter(function (symbol_info) {
