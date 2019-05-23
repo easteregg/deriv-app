@@ -63,7 +63,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"404":"404","account_password":"account_password","api_token":"api_token","authorized_application":"authorized_application","cashier_password":"cashier_password","contract":"contract","financial_assessment":"financial_assessment","limits":"limits","login_history":"login_history","open_positions~portfolio~profit_table~statement":"open_positions~portfolio~profit_table~statement","open_positions~profit_table~statement":"open_positions~profit_table~statement","open_positions":"open_positions","profit_table":"profit_table","statement":"statement","portfolio":"portfolio","personal_details":"personal_details","reports":"reports","self_exclusion":"self_exclusion","settings":"settings","vendors~smart_chart":"vendors~smart_chart","smart_chart":"smart_chart"}[chunkId]||chunkId) + "-" + {"404":"fdd90647aa54964fb1ed","account_password":"e80bbb197cad5fe3d04b","api_token":"455796411755cc9d240f","authorized_application":"87b6b5bc246c480c716e","cashier_password":"40a473d15da490ee7be5","contract":"5eb845261cda995ecced","financial_assessment":"f2b2875bd22a7717c1ad","limits":"b108abb5bcd4b46ba7b5","login_history":"dcb5548da21ab243acf1","open_positions~portfolio~profit_table~statement":"376e158bae33d4862480","open_positions~profit_table~statement":"0f9bf076c7828f1d761d","open_positions":"a0a6b49d9b3629c7bdec","profit_table":"8418b00b4dffb320a336","statement":"6e2c45498e205511293f","portfolio":"28117780a46b8812a563","personal_details":"3f27d12d238da8ef9393","reports":"8110f497c523dd5de505","self_exclusion":"7b24d88cd6b9f04ae3d0","settings":"ee411577a3c3a94f2f4e","vendors~smart_chart":"0d2af5c89b2226f90ecc","smart_chart":"2e44e5faf86591428c4a"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"404":"404","account_password":"account_password","api_token":"api_token","authorized_application":"authorized_application","cashier_password":"cashier_password","contract":"contract","financial_assessment":"financial_assessment","limits":"limits","login_history":"login_history","open_positions~portfolio~profit_table~statement":"open_positions~portfolio~profit_table~statement","open_positions~profit_table~statement":"open_positions~profit_table~statement","open_positions":"open_positions","profit_table":"profit_table","statement":"statement","portfolio":"portfolio","personal_details":"personal_details","reports":"reports","self_exclusion":"self_exclusion","settings":"settings","vendors~smart_chart":"vendors~smart_chart","smart_chart":"smart_chart"}[chunkId]||chunkId) + "-" + {"404":"fdd90647aa54964fb1ed","account_password":"e80bbb197cad5fe3d04b","api_token":"455796411755cc9d240f","authorized_application":"87b6b5bc246c480c716e","cashier_password":"40a473d15da490ee7be5","contract":"c1498f6621e130ecc489","financial_assessment":"f2b2875bd22a7717c1ad","limits":"b108abb5bcd4b46ba7b5","login_history":"dcb5548da21ab243acf1","open_positions~portfolio~profit_table~statement":"376e158bae33d4862480","open_positions~profit_table~statement":"0f9bf076c7828f1d761d","open_positions":"a0a6b49d9b3629c7bdec","profit_table":"8418b00b4dffb320a336","statement":"6e2c45498e205511293f","portfolio":"28117780a46b8812a563","personal_details":"3f27d12d238da8ef9393","reports":"8110f497c523dd5de505","self_exclusion":"7b24d88cd6b9f04ae3d0","settings":"ee411577a3c3a94f2f4e","vendors~smart_chart":"0d2af5c89b2226f90ecc","smart_chart":"2e44e5faf86591428c4a"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -6767,7 +6767,7 @@ var ResultDetails = function (_React$PureComponent) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ResultDetails.__proto__ || Object.getPrototypeOf(ResultDetails)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            is_open: false
+            is_open: _this.props.is_open || false
         }, _this.toggleDetails = function () {
             _this.setState({ is_open: !_this.state.is_open }, _this.handleShade);
         }, _this.handleShade = function () {
@@ -6868,7 +6868,8 @@ ResultDetails.propTypes = {
     duration: _propTypes2.default.number,
     duration_unit: _propTypes2.default.string,
     exit_spot: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
-    has_result: _propTypes2.default.bool
+    has_result: _propTypes2.default.bool,
+    is_open: _propTypes2.default.bool
 };
 
 exports.default = ResultDetails;
@@ -8435,14 +8436,9 @@ var HighlightWrapper = function (_React$PureComponent) {
     _createClass(HighlightWrapper, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var _this2 = this;
-
             var active_button_el = [].concat(_toConsumableArray(this.node.getElementsByClassName('button-menu__button--active')))[0];
             if (!this.node) return;
-            // Timeout needed here for bug where the el is returning wrong width and offset after mount
-            setTimeout(function () {
-                _this2.updateHighlightPosition(active_button_el);
-            }, 250);
+            this.updateHighlightPosition(active_button_el);
         }
     }, {
         key: 'componentDidUpdate',
@@ -8457,13 +8453,12 @@ var HighlightWrapper = function (_React$PureComponent) {
     }, {
         key: 'componentWillUnMount',
         value: function componentWillUnMount() {
-            window.removeEventListener('resize', this.updateHighlightPosition);
             this.resetHighlight();
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this2 = this;
 
             var _props = this.props,
                 className = _props.className,
@@ -8476,12 +8471,12 @@ var HighlightWrapper = function (_React$PureComponent) {
             return _react2.default.createElement(
                 'div',
                 _extends({ ref: function ref(node) {
-                        return _this3.node = node;
+                        return _this2.node = node;
                     } }, props),
                 _react2.default.Children.map(this.props.children, function (child) {
                     return _react2.default.cloneElement(child, {
                         onClick: function onClick(e) {
-                            return _this3.onClick(e, child.props.onClick);
+                            return _this2.onClick(e, child.props.onClick);
                         }
                     });
                 }),
@@ -8533,14 +8528,16 @@ var Highlight = function Highlight(_ref) {
         width = _ref.width;
 
     var border_radius_size = '4px';
+    var left_offset = left < 110 ? 0 : left;
+    var width_offset = width < 110 ? 111 : width;
     var highlight_style = {
-        width: width,
+        width: width_offset,
         left: 0,
-        transform: 'translate3d(' + left + 'px, 0, 0)',
-        'borderTopLeftRadius': left === 0 ? border_radius_size : 0,
-        'borderTopRightRadius': left === 0 ? 0 : border_radius_size,
-        'borderBottomLeftRadius': left === 0 ? border_radius_size : 0,
-        'borderBottomRightRadius': left === 0 ? 0 : border_radius_size
+        transform: 'translate3d(' + left_offset + 'px, 0, 0)',
+        'borderTopLeftRadius': left_offset === 0 ? border_radius_size : 0,
+        'borderTopRightRadius': left_offset === 0 ? 0 : border_radius_size,
+        'borderBottomLeftRadius': left_offset === 0 ? border_radius_size : 0,
+        'borderBottomRightRadius': left_offset === 0 ? 0 : border_radius_size
     };
 
     return _react2.default.createElement('span', { style: highlight_style, className: 'button-menu--highlight' });
@@ -14223,6 +14220,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var MarketUnavailableModal = function MarketUnavailableModal(_ref) {
     var is_visible = _ref.is_visible,
+        resetPreviousSymbol = _ref.resetPreviousSymbol,
         setHasOnlyForwardingContracts = _ref.setHasOnlyForwardingContracts;
     return _react2.default.createElement(
         _fullPageModal2.default,
@@ -14234,7 +14232,7 @@ var MarketUnavailableModal = function MarketUnavailableModal(_ref) {
                 return window.open((0, _url.urlFor)('trading', undefined, undefined, true)) && setHasOnlyForwardingContracts(false);
             },
             onConfirm: function onConfirm() {
-                return setHasOnlyForwardingContracts(false);
+                setHasOnlyForwardingContracts(false);resetPreviousSymbol();
             },
             title: (0, _localize.localize)('Market is unavailable')
         },
@@ -14248,10 +14246,12 @@ MarketUnavailableModal.propTypes = {
 };
 
 var market_unavailable = (0, _connect.connect)(function (_ref2) {
-    var ui = _ref2.ui;
+    var ui = _ref2.ui,
+        modules = _ref2.modules;
     return {
         is_visible: ui.has_only_forward_starting_contracts,
-        setHasOnlyForwardingContracts: ui.setHasOnlyForwardingContracts
+        setHasOnlyForwardingContracts: ui.setHasOnlyForwardingContracts,
+        resetPreviousSymbol: modules.trade.resetPreviousSymbol
     };
 })(MarketUnavailableModal);
 exports.default = market_unavailable;
@@ -23180,6 +23180,9 @@ var MarkerLine = function MarkerLine(_ref) {
         line_style = _ref.line_style,
         marker_config = _ref.marker_config,
         status = _ref.status;
+
+    // TODO: Find a more elegant solution
+    if (!marker_config) return _react2.default.createElement('div', null);
     return _react2.default.createElement(
         'div',
         { className: (0, _classnames2.default)('chart-marker-line__wrapper', 'chart-marker-line--' + line_style) },
@@ -27255,6 +27258,8 @@ var _infoBox = __webpack_require__(/*! ../../Contract/Containers/info-box.jsx */
 
 var _infoBox2 = _interopRequireDefault(_infoBox);
 
+var _digits3 = __webpack_require__(/*! ../Helpers/digits */ "./src/javascript/app/Modules/Trading/Helpers/digits.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27299,7 +27304,7 @@ var Trade = function (_React$Component) {
             var contract_id = (0, _utility.getPropertyValue)(this.props.purchase_info, ['buy', 'contract_id']);
             var form_wrapper_class = this.props.is_mobile ? 'mobile-wrapper' : 'sidebar__container desktop-only';
             var should_show_bottom_widgets = this.props.is_digit_contract && this.props.is_contract_mode;
-            var should_show_last_digit_stats = this.props.is_digit_contract && !this.props.is_contract_mode;
+            var should_show_last_digit_stats = (0, _digits3.isDigitTradeType)(this.props.contract_type) && !this.props.is_contract_mode;
             var is_chart_visible = this.props.is_chart_loading || !this.props.is_chart_ready;
 
             return _react2.default.createElement(
@@ -27417,6 +27422,27 @@ exports.default = (0, _connect.connect)(function (_ref) {
         setHasOnlyForwardingContracts: ui.setHasOnlyForwardingContracts
     };
 })(Trade);
+
+/***/ }),
+
+/***/ "./src/javascript/app/Modules/Trading/Helpers/digits.js":
+/*!**************************************************************!*\
+  !*** ./src/javascript/app/Modules/Trading/Helpers/digits.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var digitTypesMap = ['even_odd', 'match_diff', 'over_under'];
+
+var isDigitTradeType = exports.isDigitTradeType = function isDigitTradeType(contract_type) {
+  return digitTypesMap.includes(contract_type);
+};
 
 /***/ }),
 
@@ -28481,7 +28507,6 @@ var handleClientNotifications = exports.handleClientNotifications = function han
 
     if (!currency) addNotification(client_notifications.currency);
     if (excluded_until) addNotification(client_notifications.self_exclusion(excluded_until));
-    if ((0, _client_base.shouldAcceptTnc)()) addNotification(client_notifications.tnc);
 
     _Services.WS.getAccountStatus().then(function (response) {
         return checkAccountStatus(response, client, addNotification, loginid);
@@ -28489,6 +28514,8 @@ var handleClientNotifications = exports.handleClientNotifications = function han
 
     _Services.WS.sendRequest({ get_settings: 1 }, { forced: true }).then(function (response) {
         if (loginid !== _storage.LocalStore.get('active_loginid')) return;
+
+        if ((0, _client_base.shouldAcceptTnc)()) addNotification(client_notifications.tnc);
 
         if (hasMissingRequiredField(response, client)) {
             addNotification(client_notifications.required_fields);
@@ -29257,6 +29284,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
             this.is_from_positions = is_from_positions;
 
             if (contract_id) {
+                this.replay_info = {};
                 if (this.is_from_positions) {
                     this.smart_chart.setIsChartLoading(true);
                 }
@@ -29269,6 +29297,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
         key: 'onMountReplay',
         value: function onMountReplay(contract_id) {
             if (contract_id) {
+                this.contract_info = {};
                 this.smart_chart = this.root_store.modules.smart_chart;
                 this.smart_chart.setContractMode(true);
                 this.replay_contract_id = contract_id;
@@ -29281,6 +29310,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
             this.forgetProposalOpenContract();
             this.forget_id = null;
             this.replay_contract_id = null;
+            this.digits_info = {};
             this.replay_info = {};
             this.smart_chart.setContractMode(false);
             this.smart_chart.cleanupContractChartView();
@@ -29632,9 +29662,10 @@ var getDurationUnitText = exports.getDurationUnitText = function getDurationUnit
     var duration_ms = obj_duration.asMilliseconds() / 1000;
     if (duration_ms) {
         if (duration_ms >= 86400000) {
-            return duration_ms === 8640000 ? unit_map.d.name_singular : unit_map.d.name_plural;
+            var days_value = duration_ms / 86400000;
+            return days_value <= 2 ? unit_map.d.name_singular : unit_map.d.name_plural;
         } else if (duration_ms >= 3600000 && duration_ms < 86400000) {
-            return duration_ms === 360000 ? unit_map.h.name_singular : unit_map.h.name_plural;
+            return duration_ms === 3600000 ? unit_map.h.name_singular : unit_map.h.name_plural;
         } else if (duration_ms >= 60000 && duration_ms < 3600000) {
             return duration_ms === 60000 ? unit_map.m.name_singular : unit_map.m.name_plural;
         } else if (duration_ms >= 1000 && duration_ms < 60000) {
@@ -32339,9 +32370,11 @@ var isMarketClosed = exports.isMarketClosed = function isMarketClosed() {
     var symbol = arguments[1];
 
     if (!active_symbols.length) return true;
-    return !active_symbols.filter(function (symbol_info) {
+    return active_symbols.filter(function (x) {
+        return x.symbol === symbol;
+    })[0] ? !active_symbols.filter(function (symbol_info) {
         return symbol_info.symbol === symbol;
-    })[0].exchange_is_open;
+    })[0].exchange_is_open : false;
 };
 
 /***/ }),
@@ -33569,7 +33602,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _descriptor25, _descriptor26, _descriptor27, _descriptor28, _descriptor29, _descriptor30, _descriptor31, _descriptor32, _descriptor33, _descriptor34, _descriptor35, _descriptor36, _descriptor37, _descriptor38;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _descriptor25, _descriptor26, _descriptor27, _descriptor28, _descriptor29, _descriptor30, _descriptor31, _descriptor32, _descriptor33, _descriptor34, _descriptor35, _descriptor36, _descriptor37, _descriptor38, _descriptor39;
 
 var _lodash = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
 
@@ -33692,7 +33725,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 var store_name = 'trade_store';
 
-var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, _dec5 = _mobx.action.bound, _dec6 = _mobx.action.bound, _dec7 = _mobx.action.bound, _dec8 = _mobx.action.bound, _dec9 = _mobx.action.bound, _dec10 = _mobx.action.bound, _dec11 = _mobx.action.bound, _dec12 = _mobx.action.bound, _dec13 = _mobx.action.bound, _dec14 = _mobx.action.bound, _dec15 = _mobx.action.bound, _dec16 = _mobx.action.bound, _dec17 = _mobx.action.bound, _dec18 = _mobx.action.bound, _dec19 = _mobx.action.bound, _dec20 = _mobx.action.bound, _dec21 = _mobx.action.bound, (_class = function (_BaseStore) {
+var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, _dec5 = _mobx.action.bound, _dec6 = _mobx.action.bound, _dec7 = _mobx.action.bound, _dec8 = _mobx.action.bound, _dec9 = _mobx.action.bound, _dec10 = _mobx.action.bound, _dec11 = _mobx.action.bound, _dec12 = _mobx.action.bound, _dec13 = _mobx.action.bound, _dec14 = _mobx.action.bound, _dec15 = _mobx.action.bound, _dec16 = _mobx.action.bound, _dec17 = _mobx.action.bound, _dec18 = _mobx.action.bound, _dec19 = _mobx.action.bound, _dec20 = _mobx.action.bound, _dec21 = _mobx.action.bound, _dec22 = _mobx.action.bound, _dec23 = _mobx.action.bound, (_class = function (_BaseStore) {
     _inherits(TradeStore, _BaseStore);
 
     // Query string
@@ -33711,9 +33744,6 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
 
 
     // Barrier
-
-
-    // Underlying
     function TradeStore(_ref) {
         var root_store = _ref.root_store;
 
@@ -33740,73 +33770,75 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
 
         _initDefineProp(_this, 'is_market_closed', _descriptor6, _this);
 
-        _initDefineProp(_this, 'active_symbols', _descriptor7, _this);
+        _initDefineProp(_this, 'previous_symbol', _descriptor7, _this);
 
-        _initDefineProp(_this, 'contract_expiry_type', _descriptor8, _this);
+        _initDefineProp(_this, 'active_symbols', _descriptor8, _this);
 
-        _initDefineProp(_this, 'contract_start_type', _descriptor9, _this);
+        _initDefineProp(_this, 'contract_expiry_type', _descriptor9, _this);
 
-        _initDefineProp(_this, 'contract_type', _descriptor10, _this);
+        _initDefineProp(_this, 'contract_start_type', _descriptor10, _this);
 
-        _initDefineProp(_this, 'contract_types_list', _descriptor11, _this);
+        _initDefineProp(_this, 'contract_type', _descriptor11, _this);
 
-        _initDefineProp(_this, 'form_components', _descriptor12, _this);
+        _initDefineProp(_this, 'contract_types_list', _descriptor12, _this);
 
-        _initDefineProp(_this, 'trade_types', _descriptor13, _this);
+        _initDefineProp(_this, 'form_components', _descriptor13, _this);
 
-        _initDefineProp(_this, 'amount', _descriptor14, _this);
+        _initDefineProp(_this, 'trade_types', _descriptor14, _this);
 
-        _initDefineProp(_this, 'basis', _descriptor15, _this);
+        _initDefineProp(_this, 'amount', _descriptor15, _this);
 
-        _initDefineProp(_this, 'basis_list', _descriptor16, _this);
+        _initDefineProp(_this, 'basis', _descriptor16, _this);
 
-        _initDefineProp(_this, 'currency', _descriptor17, _this);
+        _initDefineProp(_this, 'basis_list', _descriptor17, _this);
 
-        _initDefineProp(_this, 'duration', _descriptor18, _this);
+        _initDefineProp(_this, 'currency', _descriptor18, _this);
 
-        _initDefineProp(_this, 'duration_unit', _descriptor19, _this);
+        _initDefineProp(_this, 'duration', _descriptor19, _this);
 
-        _initDefineProp(_this, 'duration_units_list', _descriptor20, _this);
+        _initDefineProp(_this, 'duration_unit', _descriptor20, _this);
 
-        _initDefineProp(_this, 'duration_min_max', _descriptor21, _this);
+        _initDefineProp(_this, 'duration_units_list', _descriptor21, _this);
 
-        _initDefineProp(_this, 'expiry_date', _descriptor22, _this);
+        _initDefineProp(_this, 'duration_min_max', _descriptor22, _this);
 
-        _initDefineProp(_this, 'expiry_time', _descriptor23, _this);
+        _initDefineProp(_this, 'expiry_date', _descriptor23, _this);
 
-        _initDefineProp(_this, 'expiry_type', _descriptor24, _this);
+        _initDefineProp(_this, 'expiry_time', _descriptor24, _this);
 
-        _initDefineProp(_this, 'barrier_1', _descriptor25, _this);
+        _initDefineProp(_this, 'expiry_type', _descriptor25, _this);
 
-        _initDefineProp(_this, 'barrier_2', _descriptor26, _this);
+        _initDefineProp(_this, 'barrier_1', _descriptor26, _this);
 
-        _initDefineProp(_this, 'barrier_count', _descriptor27, _this);
+        _initDefineProp(_this, 'barrier_2', _descriptor27, _this);
 
-        _initDefineProp(_this, 'start_date', _descriptor28, _this);
+        _initDefineProp(_this, 'barrier_count', _descriptor28, _this);
 
-        _initDefineProp(_this, 'start_dates_list', _descriptor29, _this);
+        _initDefineProp(_this, 'start_date', _descriptor29, _this);
 
-        _initDefineProp(_this, 'start_time', _descriptor30, _this);
+        _initDefineProp(_this, 'start_dates_list', _descriptor30, _this);
 
-        _initDefineProp(_this, 'sessions', _descriptor31, _this);
+        _initDefineProp(_this, 'start_time', _descriptor31, _this);
 
-        _initDefineProp(_this, 'market_open_times', _descriptor32, _this);
+        _initDefineProp(_this, 'sessions', _descriptor32, _this);
 
-        _initDefineProp(_this, 'market_close_times', _descriptor33, _this);
+        _initDefineProp(_this, 'market_open_times', _descriptor33, _this);
 
-        _initDefineProp(_this, 'last_digit', _descriptor34, _this);
+        _initDefineProp(_this, 'market_close_times', _descriptor34, _this);
 
-        _initDefineProp(_this, 'proposal_info', _descriptor35, _this);
+        _initDefineProp(_this, 'last_digit', _descriptor35, _this);
 
-        _initDefineProp(_this, 'purchase_info', _descriptor36, _this);
+        _initDefineProp(_this, 'proposal_info', _descriptor36, _this);
+
+        _initDefineProp(_this, 'purchase_info', _descriptor37, _this);
 
         _this.query = '';
         _this.debouncedProposal = (0, _lodash2.default)(_this.requestProposal, 500);
         _this.proposal_requests = {};
 
-        _initDefineProp(_this, 'init', _descriptor37, _this);
+        _initDefineProp(_this, 'init', _descriptor38, _this);
 
-        _initDefineProp(_this, 'refresh', _descriptor38, _this);
+        _initDefineProp(_this, 'refresh', _descriptor39, _this);
 
         Object.defineProperty(_this, 'is_query_string_applied', {
             enumerable: false,
@@ -33849,6 +33881,9 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
 
 
     // Contract Type
+
+
+    // Underlying
 
 
     _createClass(TradeStore, [{
@@ -34001,6 +34036,44 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
             this.processNewValuesAsync(_defineProperty({}, name, value), true);
         }
     }, {
+        key: 'setPreviousSymbol',
+        value: function setPreviousSymbol(symbol) {
+            if (this.previous_symbol !== symbol) this.previous_symbol = symbol;
+        }
+    }, {
+        key: 'resetPreviousSymbol',
+        value: function () {
+            var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                var _this4 = this;
+
+                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                this.setMarketStatus((0, _activeSymbols.isMarketClosed)(this.active_symbols, this.previous_symbol));
+                                _context3.next = 3;
+                                return _Symbol.onChangeSymbolAsync(this.previous_symbol);
+
+                            case 3:
+                                (0, _mobx.runInAction)(function () {
+                                    _this4.previous_symbol = ''; // reset the symbol to default
+                                });
+
+                            case 4:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, this);
+            }));
+
+            function resetPreviousSymbol() {
+                return _ref4.apply(this, arguments);
+            }
+
+            return resetPreviousSymbol;
+        }()
+    }, {
         key: 'onHoverPurchase',
         value: function onHoverPurchase(is_over, contract_type) {
             if (this.is_purchase_enabled) {
@@ -34010,34 +34083,34 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
     }, {
         key: 'onPurchase',
         value: function onPurchase(proposal_id, price, type) {
-            var _this4 = this;
+            var _this5 = this;
 
             if (proposal_id) {
                 this.is_purchase_enabled = false;
                 (0, _purchase.processPurchase)(proposal_id, price).then((0, _mobx.action)(function (response) {
-                    if (_this4.proposal_info[type].id !== proposal_id) {
+                    if (_this5.proposal_info[type].id !== proposal_id) {
                         throw new Error('Proposal ID does not match.');
                     }
                     if (response.buy) {
-                        var contract_data = _extends({}, _this4.proposal_requests[type], _this4.proposal_info[type], {
+                        var contract_data = _extends({}, _this5.proposal_requests[type], _this5.proposal_info[type], {
                             buy_price: response.buy.buy_price
                         });
                         // toggle smartcharts to contract mode
                         var contract_id = (0, _utility.getPropertyValue)(response, ['buy', 'contract_id']);
                         if (contract_id) {
-                            _this4.root_store.modules.contract.onMount(contract_id);
-                            _this4.root_store.ui.openPositionsDrawer();
+                            _this5.root_store.modules.contract.onMount(contract_id);
+                            _this5.root_store.ui.openPositionsDrawer();
                         }
-                        _gtm2.default.pushPurchaseData(contract_data, _this4.root_store);
+                        _gtm2.default.pushPurchaseData(contract_data, _this5.root_store);
                     } else if (response.error) {
-                        _this4.root_store.common.services_error = _extends({
+                        _this5.root_store.common.services_error = _extends({
                             type: response.msg_type
                         }, response.error);
-                        _this4.root_store.ui.toggleServicesErrorModal(true);
+                        _this5.root_store.ui.toggleServicesErrorModal(true);
                     }
                     _Services.WS.forgetAll('proposal');
-                    _this4.purchase_info = response;
-                    _this4.is_purchase_enabled = true;
+                    _this5.purchase_info = response;
+                    _this5.is_purchase_enabled = true;
                 }));
             }
         }
@@ -34057,16 +34130,16 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
     }, {
         key: 'updateStore',
         value: function updateStore(new_state) {
-            var _this5 = this;
+            var _this6 = this;
 
             Object.keys((0, _utility.cloneObject)(new_state)).forEach(function (key) {
                 if (key === 'root_store' || ['validation_rules', 'validation_errors', 'currency', 'smart_chart'].indexOf(key) > -1) return;
-                if (JSON.stringify(_this5[key]) === JSON.stringify(new_state[key])) {
+                if (JSON.stringify(_this6[key]) === JSON.stringify(new_state[key])) {
                     delete new_state[key];
                 } else {
                     if (key === 'symbol') {
-                        _this5.is_purchase_enabled = false;
-                        _this5.is_trade_enabled = false;
+                        _this6.is_purchase_enabled = false;
+                        _this6.is_trade_enabled = false;
                     }
 
                     if (new_state.start_date && typeof new_state.start_date === 'string') {
@@ -34074,16 +34147,16 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                     }
 
                     // Add changes to queryString of the url
-                    if (_queryString.allowed_query_string_variables.indexOf(key) !== -1 && _this5.is_trade_component_mounted) {
+                    if (_queryString.allowed_query_string_variables.indexOf(key) !== -1 && _this6.is_trade_component_mounted) {
                         _urlHelper2.default.setQueryParam(_defineProperty({}, key, new_state[key]));
                     }
 
-                    _this5[key] = new_state[key];
+                    _this6[key] = new_state[key];
 
                     // validation is done in mobx intercept (base_store.js)
                     // when barrier_1 is set, it is compared with store.barrier_2 (which is not updated yet)
                     if (key === 'barrier_2' && new_state.barrier_1) {
-                        _this5.barrier_1 = new_state.barrier_1; // set it again, after barrier_2 is updated in store
+                        _this6.barrier_1 = new_state.barrier_1; // set it again, after barrier_2 is updated in store
                     }
                 }
             });
@@ -34092,14 +34165,14 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
     }, {
         key: 'processNewValuesAsync',
         value: function () {
-            var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
                 var obj_new_values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
                 var is_changed_by_user = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
                 var obj_old_values = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
                 var prev_currency, has_only_forward_starting_contracts, new_state, is_barrier_changed, snapshot, query_string_values;
-                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                return regeneratorRuntime.wrap(function _callee4$(_context4) {
                     while (1) {
-                        switch (_context3.prev = _context3.next) {
+                        switch (_context4.prev = _context4.next) {
                             case 0:
                                 // Sets the default value to Amount when Currency has changed from Fiat to Crypto and vice versa.
                                 // The source of default values is the website_status response.
@@ -34115,35 +34188,36 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
 
                                 has_only_forward_starting_contracts = void 0;
 
-                                if (!/symbol/.test(Object.keys(obj_new_values))) {
-                                    _context3.next = 8;
+                                if (!Object.keys(obj_new_values).includes('symbol')) {
+                                    _context4.next = 9;
                                     break;
                                 }
 
-                                _context3.next = 6;
+                                this.setPreviousSymbol(this.symbol);
+                                _context4.next = 7;
                                 return _Symbol.onChangeSymbolAsync(obj_new_values.symbol);
 
-                            case 6:
-                                has_only_forward_starting_contracts = _contractType2.default.getContractCategories().has_only_forward_starting_contracts;
+                            case 7:
                                 this.setMarketStatus((0, _activeSymbols.isMarketClosed)(this.active_symbols, obj_new_values.symbol));
+                                has_only_forward_starting_contracts = _contractType2.default.getContractCategories().has_only_forward_starting_contracts;
 
-                            case 8:
+                            case 9:
                                 // TODO: remove all traces of setHasOnlyForwardingContracts and has_only_forward_starting_contracts in app
                                 //  once future contracts are implemented
                                 this.root_store.ui.setHasOnlyForwardingContracts(has_only_forward_starting_contracts);
 
                                 if (!has_only_forward_starting_contracts) {
-                                    _context3.next = 11;
+                                    _context4.next = 12;
                                     break;
                                 }
 
-                                return _context3.abrupt('return');
+                                return _context4.abrupt('return');
 
-                            case 11:
+                            case 12:
                                 new_state = this.updateStore((0, _utility.cloneObject)(obj_new_values));
 
                                 if (!(is_changed_by_user || /\b(symbol|contract_types_list)\b/.test(Object.keys(new_state)))) {
-                                    _context3.next = 24;
+                                    _context4.next = 25;
                                     break;
                                 }
 
@@ -34162,11 +34236,11 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                                     }
                                 }
 
-                                _context3.next = 17;
+                                _context4.next = 18;
                                 return (0, _process.processTradeParams)(this, new_state);
 
-                            case 17:
-                                snapshot = _context3.sent;
+                            case 18:
+                                snapshot = _context4.sent;
                                 query_string_values = this.updateQueryString();
 
                                 snapshot.is_trade_enabled = true;
@@ -34184,16 +34258,16 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                                     this.debouncedProposal();
                                 }
 
-                            case 24:
+                            case 25:
                             case 'end':
-                                return _context3.stop();
+                                return _context4.stop();
                         }
                     }
-                }, _callee3, this);
+                }, _callee4, this);
             }));
 
             function processNewValuesAsync() {
-                return _ref4.apply(this, arguments);
+                return _ref5.apply(this, arguments);
             }
 
             return processNewValuesAsync;
@@ -34201,7 +34275,7 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
     }, {
         key: 'requestProposal',
         value: function requestProposal() {
-            var _this6 = this;
+            var _this7 = this;
 
             var requests = (0, _proposal.createProposalRequests)(this);
 
@@ -34226,7 +34300,7 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                 this.root_store.modules.contract.setIsDigitContract(Object.keys(this.proposal_requests)[0]);
 
                 Object.keys(this.proposal_requests).forEach(function (type) {
-                    _Services.WS.subscribeProposal(_this6.proposal_requests[type], _this6.onProposalResponse);
+                    _Services.WS.subscribeProposal(_this7.proposal_requests[type], _this7.onProposalResponse);
                 });
             }
         }
@@ -34326,73 +34400,73 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
     }, {
         key: 'accountSwitcherListener',
         value: function accountSwitcherListener() {
-            var _this7 = this;
+            var _this8 = this;
 
             return new Promise(function () {
-                var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(resolve) {
-                    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(resolve) {
+                    return regeneratorRuntime.wrap(function _callee5$(_context5) {
                         while (1) {
-                            switch (_context4.prev = _context4.next) {
+                            switch (_context5.prev = _context5.next) {
                                 case 0:
-                                    _context4.next = 2;
-                                    return _this7.processNewValuesAsync({ currency: _this7.root_store.client.currency }, { currency: _this7.currency });
+                                    _context5.next = 2;
+                                    return _this8.processNewValuesAsync({ currency: _this8.root_store.client.currency }, { currency: _this8.currency });
 
                                 case 2:
-                                    _context4.next = 4;
-                                    return _this7.refresh();
+                                    _context5.next = 4;
+                                    return _this8.refresh();
 
                                 case 4:
-                                    _context4.next = 6;
-                                    return _this7.prepareTradeStore();
+                                    _context5.next = 6;
+                                    return _this8.prepareTradeStore();
 
                                 case 6:
-                                    return _context4.abrupt('return', resolve(_this7.debouncedProposal()));
+                                    return _context5.abrupt('return', resolve(_this8.debouncedProposal()));
 
                                 case 7:
                                 case 'end':
-                                    return _context4.stop();
+                                    return _context5.stop();
                             }
                         }
-                    }, _callee4, _this7);
+                    }, _callee5, _this8);
                 }));
 
                 return function (_x4) {
-                    return _ref5.apply(this, arguments);
+                    return _ref6.apply(this, arguments);
                 };
             }());
         }
     }, {
         key: 'onMount',
         value: function () {
-            var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-                var _this8 = this;
+            var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+                var _this9 = this;
 
-                return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                return regeneratorRuntime.wrap(function _callee6$(_context6) {
                     while (1) {
-                        switch (_context5.prev = _context5.next) {
+                        switch (_context6.prev = _context6.next) {
                             case 0:
-                                _context5.next = 2;
+                                _context6.next = 2;
                                 return this.prepareTradeStore();
 
                             case 2:
                                 this.debouncedProposal();
                                 (0, _mobx.runInAction)(function () {
-                                    _this8.is_trade_component_mounted = true;
-                                    _this8.onLoadingMount();
+                                    _this9.is_trade_component_mounted = true;
+                                    _this9.onLoadingMount();
                                 });
                                 this.updateQueryString();
                                 this.onSwitchAccount(this.accountSwitcherListener);
 
                             case 6:
                             case 'end':
-                                return _context5.stop();
+                                return _context6.stop();
                         }
                     }
-                }, _callee5, this);
+                }, _callee6, this);
             }));
 
             function onMount() {
-                return _ref6.apply(this, arguments);
+                return _ref7.apply(this, arguments);
             }
 
             return onMount;
@@ -34400,11 +34474,11 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
     }, {
         key: 'onLoadingMount',
         value: function onLoadingMount() {
-            var _this9 = this;
+            var _this10 = this;
 
             // TODO: find better way to remove initial loader
             setTimeout(function () {
-                _this9.root_store.ui.setAppLoading(false);
+                _this10.root_store.ui.setAppLoading(false);
             }, 2200);
         }
     }, {
@@ -34443,187 +34517,192 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
 }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, 'is_market_closed', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
-        return true;
+        return false;
     }
-}), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, 'active_symbols', [_mobx.observable], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, 'previous_symbol', [_mobx.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+        return '';
+    }
+}), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, 'active_symbols', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, 'contract_expiry_type', [_mobx.observable], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, 'contract_expiry_type', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, 'contract_start_type', [_mobx.observable], {
+}), _descriptor10 = _applyDecoratedDescriptor(_class.prototype, 'contract_start_type', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor10 = _applyDecoratedDescriptor(_class.prototype, 'contract_type', [_mobx.observable], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class.prototype, 'contract_type', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor11 = _applyDecoratedDescriptor(_class.prototype, 'contract_types_list', [_mobx.observable], {
+}), _descriptor12 = _applyDecoratedDescriptor(_class.prototype, 'contract_types_list', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return {};
     }
-}), _descriptor12 = _applyDecoratedDescriptor(_class.prototype, 'form_components', [_mobx.observable], {
+}), _descriptor13 = _applyDecoratedDescriptor(_class.prototype, 'form_components', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor13 = _applyDecoratedDescriptor(_class.prototype, 'trade_types', [_mobx.observable], {
+}), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, 'trade_types', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return {};
     }
-}), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, 'amount', [_mobx.observable], {
+}), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, 'amount', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return 10;
     }
-}), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, 'basis', [_mobx.observable], {
+}), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, 'basis', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, 'basis_list', [_mobx.observable], {
+}), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, 'basis_list', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, 'currency', [_mobx.observable], {
+}), _descriptor18 = _applyDecoratedDescriptor(_class.prototype, 'currency', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor18 = _applyDecoratedDescriptor(_class.prototype, 'duration', [_mobx.observable], {
+}), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, 'duration', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return 5;
     }
-}), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, 'duration_unit', [_mobx.observable], {
+}), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, 'duration_unit', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, 'duration_units_list', [_mobx.observable], {
+}), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, 'duration_units_list', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, 'duration_min_max', [_mobx.observable], {
+}), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, 'duration_min_max', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return {};
     }
-}), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, 'expiry_date', [_mobx.observable], {
+}), _descriptor23 = _applyDecoratedDescriptor(_class.prototype, 'expiry_date', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor23 = _applyDecoratedDescriptor(_class.prototype, 'expiry_time', [_mobx.observable], {
+}), _descriptor24 = _applyDecoratedDescriptor(_class.prototype, 'expiry_time', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor24 = _applyDecoratedDescriptor(_class.prototype, 'expiry_type', [_mobx.observable], {
+}), _descriptor25 = _applyDecoratedDescriptor(_class.prototype, 'expiry_type', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return 'duration';
     }
-}), _descriptor25 = _applyDecoratedDescriptor(_class.prototype, 'barrier_1', [_mobx.observable], {
+}), _descriptor26 = _applyDecoratedDescriptor(_class.prototype, 'barrier_1', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor26 = _applyDecoratedDescriptor(_class.prototype, 'barrier_2', [_mobx.observable], {
+}), _descriptor27 = _applyDecoratedDescriptor(_class.prototype, 'barrier_2', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return '';
     }
-}), _descriptor27 = _applyDecoratedDescriptor(_class.prototype, 'barrier_count', [_mobx.observable], {
+}), _descriptor28 = _applyDecoratedDescriptor(_class.prototype, 'barrier_count', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return 0;
     }
-}), _descriptor28 = _applyDecoratedDescriptor(_class.prototype, 'start_date', [_mobx.observable], {
+}), _descriptor29 = _applyDecoratedDescriptor(_class.prototype, 'start_date', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return Number(0);
     }
-}), _descriptor29 = _applyDecoratedDescriptor(_class.prototype, 'start_dates_list', [_mobx.observable], {
+}), _descriptor30 = _applyDecoratedDescriptor(_class.prototype, 'start_dates_list', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor30 = _applyDecoratedDescriptor(_class.prototype, 'start_time', [_mobx.observable], {
+}), _descriptor31 = _applyDecoratedDescriptor(_class.prototype, 'start_time', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return null;
     }
-}), _descriptor31 = _applyDecoratedDescriptor(_class.prototype, 'sessions', [_mobx.observable], {
+}), _descriptor32 = _applyDecoratedDescriptor(_class.prototype, 'sessions', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor32 = _applyDecoratedDescriptor(_class.prototype, 'market_open_times', [_mobx.observable], {
+}), _descriptor33 = _applyDecoratedDescriptor(_class.prototype, 'market_open_times', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor33 = _applyDecoratedDescriptor(_class.prototype, 'market_close_times', [_mobx.observable], {
+}), _descriptor34 = _applyDecoratedDescriptor(_class.prototype, 'market_close_times', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return [];
     }
-}), _descriptor34 = _applyDecoratedDescriptor(_class.prototype, 'last_digit', [_mobx.observable], {
+}), _descriptor35 = _applyDecoratedDescriptor(_class.prototype, 'last_digit', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return 5;
     }
-}), _descriptor35 = _applyDecoratedDescriptor(_class.prototype, 'proposal_info', [_mobx.observable], {
+}), _descriptor36 = _applyDecoratedDescriptor(_class.prototype, 'proposal_info', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return {};
     }
-}), _descriptor36 = _applyDecoratedDescriptor(_class.prototype, 'purchase_info', [_mobx.observable], {
+}), _descriptor37 = _applyDecoratedDescriptor(_class.prototype, 'purchase_info', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return {};
     }
-}), _descriptor37 = _applyDecoratedDescriptor(_class.prototype, 'init', [_dec], {
+}), _descriptor38 = _applyDecoratedDescriptor(_class.prototype, 'init', [_dec], {
     enumerable: true,
     initializer: function initializer() {
-        var _this10 = this;
+        var _this11 = this;
 
-        return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
                 while (1) {
-                    switch (_context6.prev = _context6.next) {
+                    switch (_context7.prev = _context7.next) {
                         case 0:
-                            _context6.next = 2;
+                            _context7.next = 2;
                             return _socket_base2.default.wait('website_status');
 
                         case 2:
                         case 'end':
-                            return _context6.stop();
+                            return _context7.stop();
                     }
                 }
-            }, _callee6, _this10);
+            }, _callee7, _this11);
         }));
     }
-}), _descriptor38 = _applyDecoratedDescriptor(_class.prototype, 'refresh', [_dec2], {
+}), _descriptor39 = _applyDecoratedDescriptor(_class.prototype, 'refresh', [_dec2], {
     enumerable: true,
     initializer: function initializer() {
         return function () {
             _Services.WS.forgetAll('proposal');
         };
     }
-}), _applyDecoratedDescriptor(_class.prototype, 'prepareTradeStore', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'prepareTradeStore'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChangeMultiple', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'onChangeMultiple'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChange', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'onChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onHoverPurchase', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'onHoverPurchase'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onPurchase', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'onPurchase'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onClickNewTrade', [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, 'onClickNewTrade'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateStore', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'updateStore'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'requestProposal', [_dec10], Object.getOwnPropertyDescriptor(_class.prototype, 'requestProposal'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setMarketStatus', [_dec11], Object.getOwnPropertyDescriptor(_class.prototype, 'setMarketStatus'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onProposalResponse', [_dec12], Object.getOwnPropertyDescriptor(_class.prototype, 'onProposalResponse'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChartBarrierChange', [_dec13], Object.getOwnPropertyDescriptor(_class.prototype, 'onChartBarrierChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onAllowEqualsChange', [_dec14], Object.getOwnPropertyDescriptor(_class.prototype, 'onAllowEqualsChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateQueryString', [_dec15], Object.getOwnPropertyDescriptor(_class.prototype, 'updateQueryString'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateSymbol', [_dec16], Object.getOwnPropertyDescriptor(_class.prototype, 'updateSymbol'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'changeDurationValidationRules', [_dec17], Object.getOwnPropertyDescriptor(_class.prototype, 'changeDurationValidationRules'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'accountSwitcherListener', [_dec18], Object.getOwnPropertyDescriptor(_class.prototype, 'accountSwitcherListener'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec19], Object.getOwnPropertyDescriptor(_class.prototype, 'onMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onLoadingMount', [_dec20], Object.getOwnPropertyDescriptor(_class.prototype, 'onLoadingMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec21], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype)), _class));
+}), _applyDecoratedDescriptor(_class.prototype, 'prepareTradeStore', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'prepareTradeStore'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChangeMultiple', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'onChangeMultiple'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChange', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'onChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setPreviousSymbol', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'setPreviousSymbol'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'resetPreviousSymbol', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'resetPreviousSymbol'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onHoverPurchase', [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, 'onHoverPurchase'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onPurchase', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'onPurchase'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onClickNewTrade', [_dec10], Object.getOwnPropertyDescriptor(_class.prototype, 'onClickNewTrade'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateStore', [_dec11], Object.getOwnPropertyDescriptor(_class.prototype, 'updateStore'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'requestProposal', [_dec12], Object.getOwnPropertyDescriptor(_class.prototype, 'requestProposal'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setMarketStatus', [_dec13], Object.getOwnPropertyDescriptor(_class.prototype, 'setMarketStatus'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onProposalResponse', [_dec14], Object.getOwnPropertyDescriptor(_class.prototype, 'onProposalResponse'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChartBarrierChange', [_dec15], Object.getOwnPropertyDescriptor(_class.prototype, 'onChartBarrierChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onAllowEqualsChange', [_dec16], Object.getOwnPropertyDescriptor(_class.prototype, 'onAllowEqualsChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateQueryString', [_dec17], Object.getOwnPropertyDescriptor(_class.prototype, 'updateQueryString'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateSymbol', [_dec18], Object.getOwnPropertyDescriptor(_class.prototype, 'updateSymbol'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'changeDurationValidationRules', [_dec19], Object.getOwnPropertyDescriptor(_class.prototype, 'changeDurationValidationRules'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'accountSwitcherListener', [_dec20], Object.getOwnPropertyDescriptor(_class.prototype, 'accountSwitcherListener'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec21], Object.getOwnPropertyDescriptor(_class.prototype, 'onMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onLoadingMount', [_dec22], Object.getOwnPropertyDescriptor(_class.prototype, 'onLoadingMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec23], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype)), _class));
 exports.default = TradeStore;
 
 /***/ }),
