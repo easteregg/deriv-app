@@ -30233,6 +30233,8 @@ var _baseStore2 = _interopRequireDefault(_baseStore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
     Object.defineProperty(target, property, {
@@ -30329,41 +30331,94 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         }
     }, {
         key: 'transactionHandler',
-        value: function transactionHandler(response) {
-            var _this2 = this;
+        value: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(response) {
+                var _response$transaction, contract_id, act, res, new_pos, i;
 
-            if ('error' in response) {
-                this.error = response.error.message;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                if ('error' in response) {
+                                    this.error = response.error.message;
+                                }
+
+                                if (response.transaction) {
+                                    _context.next = 3;
+                                    break;
+                                }
+
+                                return _context.abrupt('return');
+
+                            case 3:
+                                _response$transaction = response.transaction, contract_id = _response$transaction.contract_id, act = _response$transaction.action;
+
+                                if (!(act === 'buy')) {
+                                    _context.next = 15;
+                                    break;
+                                }
+
+                                _context.next = 7;
+                                return _Services.WS.portfolio();
+
+                            case 7:
+                                res = _context.sent;
+                                new_pos = res.portfolio.contracts.find(function (pos) {
+                                    return +pos.contract_id === +contract_id;
+                                });
+
+                                if (new_pos) {
+                                    _context.next = 11;
+                                    break;
+                                }
+
+                                return _context.abrupt('return');
+
+                            case 11:
+                                this.pushNewPosition(new_pos);
+                                _Services.WS.subscribeProposalOpenContract(contract_id.toString(), this.proposalOpenContractHandler, false);
+                                _context.next = 21;
+                                break;
+
+                            case 15:
+                                if (!(act === 'sell')) {
+                                    _context.next = 21;
+                                    break;
+                                }
+
+                                i = this.getPositionIndexById(contract_id);
+
+                                // Currently, if the contract has ended before the response is sent
+                                // the Portfolio API returns an empty `contracts` array.
+                                // This causes the contract to not be pushed to the `positions` property here.
+                                // The statement below prevents accessing undefined values caused by the above explanation.
+
+                                if (!(i === -1)) {
+                                    _context.next = 19;
+                                    break;
+                                }
+
+                                return _context.abrupt('return');
+
+                            case 19:
+
+                                this.positions[i].is_loading = true;
+                                _Services.WS.subscribeProposalOpenContract(contract_id.toString(), this.populateResultDetails, false);
+
+                            case 21:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function transactionHandler(_x) {
+                return _ref2.apply(this, arguments);
             }
-            if (!response.transaction) return;
-            var _response$transaction = response.transaction,
-                contract_id = _response$transaction.contract_id,
-                act = _response$transaction.action;
 
-
-            if (act === 'buy') {
-                _Services.WS.portfolio().then(function (res) {
-                    var new_pos = res.portfolio.contracts.find(function (pos) {
-                        return +pos.contract_id === +contract_id;
-                    });
-                    if (!new_pos) return;
-                    _this2.pushNewPosition(new_pos);
-                });
-            } else if (act === 'sell') {
-                var i = this.getPositionIndexById(contract_id);
-
-                // Currently, if the contract has ended before the response is sent
-                // the Portfolio API returns an empty `contracts` array.
-                // This causes the contract to not be pushed to the `positions` property here.
-                // The statement below prevents accessing undefined values caused by the above explanation.
-                if (i === -1) {
-                    return;
-                }
-
-                this.positions[i].is_loading = true;
-                _Services.WS.subscribeProposalOpenContract(contract_id.toString(), this.populateResultDetails, false);
-            }
-        }
+            return transactionHandler;
+        }()
     }, {
         key: 'proposalOpenContractHandler',
         value: function proposalOpenContractHandler(response) {
@@ -30460,12 +30515,12 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
     }, {
         key: 'accountSwitcherListener',
         value: function accountSwitcherListener() {
-            var _this3 = this;
+            var _this2 = this;
 
             return new Promise(function (resolve) {
-                _this3.clearTable();
+                _this2.clearTable();
                 _Services.WS.forgetAll('proposal_open_contract', 'transaction');
-                return resolve(_this3.initializePortfolio());
+                return resolve(_this2.initializePortfolio());
             });
         }
     }, {
@@ -30572,47 +30627,47 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
 }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'initializePortfolio', [_dec], {
     enumerable: true,
     initializer: function initializer() {
-        var _this4 = this;
+        var _this3 = this;
 
         return function () {
-            if (!_this4.root_store.client.is_logged_in) return;
-            _this4.is_loading = true;
+            if (!_this3.root_store.client.is_logged_in) return;
+            _this3.is_loading = true;
 
-            _Services.WS.portfolio().then(_this4.portfolioHandler);
-            _Services.WS.subscribeProposalOpenContract(null, _this4.proposalOpenContractHandler, false);
-            _Services.WS.subscribeTransaction(_this4.transactionHandler, false);
+            _Services.WS.portfolio().then(_this3.portfolioHandler);
+            _Services.WS.subscribeProposalOpenContract(null, _this3.proposalOpenContractHandler, false);
+            _Services.WS.subscribeTransaction(_this3.transactionHandler, false);
         };
     }
 }), _applyDecoratedDescriptor(_class.prototype, 'clearTable', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'clearTable'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'portfolioHandler', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'portfolioHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'transactionHandler', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'transactionHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'proposalOpenContractHandler', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'proposalOpenContractHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onClickSell', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'onClickSell'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleSell', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'handleSell'), _class.prototype), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, 'populateResultDetails', [_dec8], {
     enumerable: true,
     initializer: function initializer() {
-        var _this5 = this;
+        var _this4 = this;
 
         return function (response) {
             var contract_response = response.proposal_open_contract;
-            var i = _this5.getPositionIndexById(contract_response.contract_id);
+            var i = _this4.getPositionIndexById(contract_response.contract_id);
 
-            _this5.positions[i].contract_info = contract_response;
-            _this5.positions[i].exit_spot = contract_response.exit_tick || contract_response.current_spot; // workaround if no exit_tick in proposal_open_contract, use latest spot
-            _this5.positions[i].duration = (0, _details.getDurationTime)(contract_response);
-            _this5.positions[i].duration_unit = (0, _details.getDurationUnitText)((0, _details.getDurationPeriod)(contract_response));
-            _this5.positions[i].is_valid_to_sell = (0, _logic.isValidToSell)(contract_response);
-            _this5.positions[i].result = (0, _logic.getDisplayStatus)(contract_response);
-            _this5.positions[i].profit_loss = +contract_response.profit;
-            _this5.positions[i].sell_time = (0, _logic.getEndTime)(contract_response) || contract_response.current_spot_time; // same as exit_spot, use latest spot time if no exit_tick_time
-            _this5.positions[i].sell_price = contract_response.sell_price;
-            _this5.positions[i].status = 'complete';
+            _this4.positions[i].contract_info = contract_response;
+            _this4.positions[i].exit_spot = contract_response.exit_tick || contract_response.current_spot; // workaround if no exit_tick in proposal_open_contract, use latest spot
+            _this4.positions[i].duration = (0, _details.getDurationTime)(contract_response);
+            _this4.positions[i].duration_unit = (0, _details.getDurationUnitText)((0, _details.getDurationPeriod)(contract_response));
+            _this4.positions[i].is_valid_to_sell = (0, _logic.isValidToSell)(contract_response);
+            _this4.positions[i].result = (0, _logic.getDisplayStatus)(contract_response);
+            _this4.positions[i].profit_loss = +contract_response.profit;
+            _this4.positions[i].sell_time = (0, _logic.getEndTime)(contract_response) || contract_response.current_spot_time; // same as exit_spot, use latest spot time if no exit_tick_time
+            _this4.positions[i].sell_price = contract_response.sell_price;
+            _this4.positions[i].status = 'complete';
 
             // fix for missing barrier and entry_spot
-            if (!_this5.positions[i].contract_info.barrier || !_this5.positions[i].contract_info.entry_spot) {
-                _this5.positions[i].contract_info.barrier = _this5.positions[i].barrier;
-                _this5.positions[i].contract_info.entry_spot = _this5.positions[i].entry_spot;
+            if (!_this4.positions[i].contract_info.barrier || !_this4.positions[i].contract_info.entry_spot) {
+                _this4.positions[i].contract_info.barrier = _this4.positions[i].barrier;
+                _this4.positions[i].contract_info.entry_spot = _this4.positions[i].entry_spot;
             }
 
             // remove exit_spot for manually sold contracts
-            if ((0, _logic.isUserSold)(contract_response)) _this5.positions[i].exit_spot = '-';
+            if ((0, _logic.isUserSold)(contract_response)) _this4.positions[i].exit_spot = '-';
 
-            _this5.positions[i].is_loading = false;
+            _this4.positions[i].is_loading = false;
         };
     }
 }), _applyDecoratedDescriptor(_class.prototype, 'pushNewPosition', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'pushNewPosition'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'removePositionById', [_dec10], Object.getOwnPropertyDescriptor(_class.prototype, 'removePositionById'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'accountSwitcherListener', [_dec11], Object.getOwnPropertyDescriptor(_class.prototype, 'accountSwitcherListener'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec12], Object.getOwnPropertyDescriptor(_class.prototype, 'onMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec13], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'totals', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'totals'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'active_positions_totals', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'active_positions_totals'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'active_positions', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'active_positions'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'all_positions', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'all_positions'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'is_active_empty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'is_active_empty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'is_empty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'is_empty'), _class.prototype)), _class));
