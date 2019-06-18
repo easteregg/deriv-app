@@ -4337,7 +4337,7 @@ html {
   grid-template-columns: 128px minmax(-webkit-min-content, 280px) minmax(-webkit-min-content, 280px);
   grid-template-columns: 128px minmax(min-content, 280px) minmax(min-content, 280px);
   position: absolute;
-  top: 42px;
+  top: 51px;
   right: 0;
   z-index: 99;
   border-radius: 4px; }
@@ -4355,6 +4355,24 @@ html {
     height: 100%;
     background-color: #000000;
     z-index: 98; }
+  .composite-calendar__input-fields {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .theme--light .composite-calendar__input-fields {
+      background-color: #f4f4f6;
+      padding: 8px;
+      border-radius: 4px; }
+    .theme--dark .composite-calendar__input-fields {
+      background-color: #191c31;
+      padding: 8px;
+      border-radius: 4px; }
+    .composite-calendar__input-fields > .input-field {
+      margin: 0; }
+      .composite-calendar__input-fields > .input-field .input {
+        height: 36px; }
+    .composite-calendar__input-fields > .input-field:not(:first-child) {
+      margin-left: 8px; }
   .theme--light .composite-calendar > .first-month .calendar__body, .theme--light .composite-calendar > .second-month .calendar__body {
     border-bottom: none; }
   .theme--dark .composite-calendar > .first-month .calendar__body, .theme--dark .composite-calendar > .second-month .calendar__body {
@@ -8390,8 +8408,6 @@ html {
     margin-left: 8px;
     fill: #2a3052;
     border-radius: 4px; }
-  .reports .input-field {
-    margin-left: 8px; }
 
 /** @define statement; weak */
 .statement {
