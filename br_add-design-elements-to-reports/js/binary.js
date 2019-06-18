@@ -63,7 +63,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"404":"404","account_password":"account_password","api_token":"api_token","authorized_application":"authorized_application","cashier_password":"cashier_password","contract":"contract","financial_assessment":"financial_assessment","limits":"limits","login_history":"login_history","open_positions~portfolio~profit_table~statement":"open_positions~portfolio~profit_table~statement","open_positions~profit_table~statement":"open_positions~profit_table~statement","open_positions":"open_positions","profit_table~statement":"profit_table~statement","profit_table":"profit_table","statement":"statement","portfolio":"portfolio","personal_details":"personal_details","reports":"reports","self_exclusion":"self_exclusion","settings":"settings","vendors~smart_chart":"vendors~smart_chart","smart_chart":"smart_chart"}[chunkId]||chunkId) + "-" + {"0":"75deb21bc2df737b5b03","1":"53327fe1871d5dd9f662","2":"4f07ac2b019fc6055e81","3":"6eead60ce6e484a89f84","4":"3a37d1cdb165ae888d6b","5":"7619865d7ced1814edb6","6":"f66928ac15d3161cf71d","7":"bdfef2d9e35fe5c66cd3","8":"78cbff0e88d19e34e614","9":"a9afc1fa00b8884662a0","10":"11dd32ed22c87c595b49","11":"b3ed2091f296ad5fa3f1","12":"6aea09661391b64cee32","13":"fe4896d6c27d657dc48d","14":"bcfeacaf8ad8f2fed3dc","15":"5b36f9150ca0ff20185e","16":"8cecc671ba9ceb479f56","17":"b8e853ea7f29cda5563e","18":"615aac2a2dbc30087d1a","19":"3aeda260f5e295403d37","20":"40d0b7240db50fd297cd","21":"ddf108a79d421ea833ee","22":"b687efde92cfab074bda","23":"a3179a5b4d415e8905c9","24":"f1eabf358e0a02277251","25":"69de805a9e60ee9532d3","26":"693322b1e24d31951755","27":"7e434eb0e7af3112eb64","28":"d99feb68a05e46fe7e24","29":"21932a2fa2f78d36563b","30":"a0636655749c049c7737","31":"8ebc9babcd75d87dd849","32":"d46e0f8c0a9296348392","33":"09be7eed53eeb610016c","34":"d6c665a26c948152ce30","35":"36bc0bb640bd162dade6","36":"55042fca3041b5eb7a91","37":"23b1dcdbd30dbbb85587","38":"4db811925dfb587a5ae8","39":"0823ea78d3bf7ae54174","40":"eccb523d7bfee4efa6a3","41":"9ecc6c81d71f6db22510","42":"f0e9133f486f3cf46c1b","43":"18447a24460691389120","44":"33aca49d050fad068398","45":"b75183565dbd0229a3ff","46":"47199c93f75a88cd8603","47":"30d53f22a29f48f122a1","48":"e5f3d059a3da939a394e","49":"d5c8e7ffb4d5372252bb","50":"d064a79c0244a9cff8b7","51":"7ca3008478211850f794","52":"07f75722b77235adfc7d","53":"9b921cd566f367bcadb1","54":"2797577bc29e437077da","55":"1128951c3c68550f2942","56":"920f89e99dc77d6dc84b","57":"b9dbe907a5731ce25a1a","58":"afc5d60629be6d92ad77","59":"e3c6cacfbeb1091d5395","60":"751aeba04436f2adb866","61":"94d2047ccd48ba784f44","62":"09d787c463376d50cc26","63":"0f113e64f99784679f1d","64":"0fdb65f65587b07ffeef","65":"cf83765a4c28e3a42908","66":"f50618e4f7aa665f3389","404":"fdd90647aa54964fb1ed","account_password":"e80bbb197cad5fe3d04b","api_token":"455796411755cc9d240f","authorized_application":"87b6b5bc246c480c716e","cashier_password":"40a473d15da490ee7be5","contract":"7d7133f041f19b2df628","financial_assessment":"f2b2875bd22a7717c1ad","limits":"b108abb5bcd4b46ba7b5","login_history":"dcb5548da21ab243acf1","open_positions~portfolio~profit_table~statement":"bdda3537d6356c629fc3","open_positions~profit_table~statement":"275f78b2f49f7c17b555","open_positions":"69200ab30147a993acbd","profit_table~statement":"6f238803474843bf7833","profit_table":"50b2eb3ccd3e66b15387","statement":"4d3746f0391bf2e471f9","portfolio":"2ba844396df077541ab1","personal_details":"3f27d12d238da8ef9393","reports":"99e484abfb7be6b1a03a","self_exclusion":"7b24d88cd6b9f04ae3d0","settings":"ee411577a3c3a94f2f4e","vendors~smart_chart":"2c6dc911ad7fbe794da0","smart_chart":"0184880cc643e8398e97"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"404":"404","account_password":"account_password","api_token":"api_token","authorized_application":"authorized_application","cashier_password":"cashier_password","contract":"contract","financial_assessment":"financial_assessment","limits":"limits","login_history":"login_history","open_positions~portfolio~profit_table~statement":"open_positions~portfolio~profit_table~statement","open_positions~profit_table~statement":"open_positions~profit_table~statement","open_positions":"open_positions","profit_table~statement":"profit_table~statement","profit_table":"profit_table","statement":"statement","portfolio":"portfolio","personal_details":"personal_details","reports":"reports","self_exclusion":"self_exclusion","settings":"settings","vendors~smart_chart":"vendors~smart_chart","smart_chart":"smart_chart"}[chunkId]||chunkId) + "-" + {"0":"75deb21bc2df737b5b03","1":"53327fe1871d5dd9f662","2":"4f07ac2b019fc6055e81","3":"6eead60ce6e484a89f84","4":"3a37d1cdb165ae888d6b","5":"7619865d7ced1814edb6","6":"f66928ac15d3161cf71d","7":"bdfef2d9e35fe5c66cd3","8":"78cbff0e88d19e34e614","9":"a9afc1fa00b8884662a0","10":"11dd32ed22c87c595b49","11":"b3ed2091f296ad5fa3f1","12":"6aea09661391b64cee32","13":"fe4896d6c27d657dc48d","14":"bcfeacaf8ad8f2fed3dc","15":"5b36f9150ca0ff20185e","16":"8cecc671ba9ceb479f56","17":"b8e853ea7f29cda5563e","18":"615aac2a2dbc30087d1a","19":"3aeda260f5e295403d37","20":"40d0b7240db50fd297cd","21":"ddf108a79d421ea833ee","22":"b687efde92cfab074bda","23":"a3179a5b4d415e8905c9","24":"f1eabf358e0a02277251","25":"69de805a9e60ee9532d3","26":"693322b1e24d31951755","27":"7e434eb0e7af3112eb64","28":"d99feb68a05e46fe7e24","29":"21932a2fa2f78d36563b","30":"a0636655749c049c7737","31":"8ebc9babcd75d87dd849","32":"d46e0f8c0a9296348392","33":"09be7eed53eeb610016c","34":"d6c665a26c948152ce30","35":"36bc0bb640bd162dade6","36":"55042fca3041b5eb7a91","37":"23b1dcdbd30dbbb85587","38":"4db811925dfb587a5ae8","39":"0823ea78d3bf7ae54174","40":"eccb523d7bfee4efa6a3","41":"9ecc6c81d71f6db22510","42":"f0e9133f486f3cf46c1b","43":"18447a24460691389120","44":"33aca49d050fad068398","45":"b75183565dbd0229a3ff","46":"47199c93f75a88cd8603","47":"30d53f22a29f48f122a1","48":"e5f3d059a3da939a394e","49":"d5c8e7ffb4d5372252bb","50":"d064a79c0244a9cff8b7","51":"7ca3008478211850f794","52":"07f75722b77235adfc7d","53":"9b921cd566f367bcadb1","54":"2797577bc29e437077da","55":"1128951c3c68550f2942","56":"920f89e99dc77d6dc84b","57":"b9dbe907a5731ce25a1a","58":"afc5d60629be6d92ad77","59":"e3c6cacfbeb1091d5395","60":"751aeba04436f2adb866","61":"94d2047ccd48ba784f44","62":"09d787c463376d50cc26","63":"0f113e64f99784679f1d","64":"0fdb65f65587b07ffeef","65":"cf83765a4c28e3a42908","66":"f50618e4f7aa665f3389","404":"fdd90647aa54964fb1ed","account_password":"e80bbb197cad5fe3d04b","api_token":"455796411755cc9d240f","authorized_application":"87b6b5bc246c480c716e","cashier_password":"40a473d15da490ee7be5","contract":"e601200aced7e7cea4be","financial_assessment":"f2b2875bd22a7717c1ad","limits":"b108abb5bcd4b46ba7b5","login_history":"dcb5548da21ab243acf1","open_positions~portfolio~profit_table~statement":"bdda3537d6356c629fc3","open_positions~profit_table~statement":"275f78b2f49f7c17b555","open_positions":"69200ab30147a993acbd","profit_table~statement":"6f238803474843bf7833","profit_table":"50b2eb3ccd3e66b15387","statement":"4d3746f0391bf2e471f9","portfolio":"2ba844396df077541ab1","personal_details":"3f27d12d238da8ef9393","reports":"99e484abfb7be6b1a03a","self_exclusion":"7b24d88cd6b9f04ae3d0","settings":"ee411577a3c3a94f2f4e","vendors~smart_chart":"184071f8960cd9fa3814","smart_chart":"0184880cc643e8398e97"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -5087,8 +5087,11 @@ var _localize = __webpack_require__(/*! ../../../../../../_common/localize */ ".
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var addCommaToNumber = exports.addCommaToNumber = function addCommaToNumber(num) {
-    var n = String(num);
+var addCommaToNumber = exports.addCommaToNumber = function addCommaToNumber(num, decimal_places) {
+    if (!num || isNaN(num)) {
+        return num;
+    }
+    var n = String(decimal_places ? (+num).toFixed(decimal_places) : num);
     var p = n.indexOf('.');
     return n.replace(/\d(?=(?:\d{3})+(?:\.|$))/g, function (m, i) {
         return p <= 0 || i < p ? m + ',' : m;
@@ -5681,7 +5684,7 @@ var PositionsDrawer = function (_React$Component) {
 }(_react2.default.Component);
 
 PositionsDrawer.propTypes = {
-    active_contract_id: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+    active_contract_id: _propTypes2.default.number,
     all_positions: _mobxReact.PropTypes.arrayOrObservableArray,
     children: _propTypes2.default.any,
     currency: _propTypes2.default.string,
@@ -16393,7 +16396,7 @@ var ContractLink = function ContractLink(_ref) {
 ContractLink.propTypes = {
     children: _propTypes2.default.node,
     className: _propTypes2.default.string,
-    contract_id: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+    contract_id: _propTypes2.default.number,
     onMount: _propTypes2.default.func
 };
 
@@ -21189,7 +21192,7 @@ var Trade = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var contract_id = (0, _utility.getPropertyValue)(this.props.purchase_info, ['buy', 'contract_id']);
+            var contract_id = +(0, _utility.getPropertyValue)(this.props.purchase_info, ['buy', 'contract_id']);
             var form_wrapper_class = this.props.is_mobile ? 'mobile-wrapper' : 'sidebar__container desktop-only';
             var should_show_bottom_widgets = this.props.is_digit_contract && this.props.is_contract_mode;
             var should_show_last_digit_stats = (0, _digits3.isDigitTradeType)(this.props.contract_type) && !this.props.is_contract_mode;
@@ -22518,27 +22521,29 @@ var createMarkerStartTime = exports.createMarkerStartTime = function createMarke
 };
 
 // -------------------- Spots --------------------
-var createMarkerSpotEntry = exports.createMarkerSpotEntry = function createMarkerSpotEntry(contract_info) {
+var createMarkerSpotEntry = exports.createMarkerSpotEntry = function createMarkerSpotEntry(contract_info, decimal_places) {
     if (!contract_info.entry_tick_time) return false;
 
     var marker_type = _markers.MARKER_TYPES_CONFIG.SPOT_ENTRY.type;
     var component_props = {};
+
+    var entry_tick = decimal_places ? (+contract_info.entry_tick).toFixed(decimal_places) : contract_info.entry_tick;
 
     var spot_has_label = (0, _digits.isDigitContract)(contract_info.contract_type);
     if (spot_has_label) {
         marker_type = _markers.MARKER_TYPES_CONFIG.SPOT_MIDDLE.type;
 
         component_props = {
-            spot_value: '' + contract_info.entry_tick,
+            spot_value: '' + entry_tick,
             spot_epoch: '' + contract_info.entry_tick_time,
             spot_count: 1
         };
     }
 
-    return createMarkerConfig(marker_type, contract_info.entry_tick_time, contract_info.entry_tick, component_props);
+    return createMarkerConfig(marker_type, contract_info.entry_tick_time, entry_tick, component_props);
 };
 
-var createMarkerSpotExit = exports.createMarkerSpotExit = function createMarkerSpotExit(contract_info, tick, idx) {
+var createMarkerSpotExit = exports.createMarkerSpotExit = function createMarkerSpotExit(contract_info, tick, decimal_places, idx) {
     if (!contract_info.exit_tick_time) return false;
     var is_user_sold = (0, _logic.isUserSold)(contract_info);
 
@@ -22549,8 +22554,10 @@ var createMarkerSpotExit = exports.createMarkerSpotExit = function createMarkerS
         align_label = tick.align_label;
     }
 
-    return createMarkerConfig(!is_user_sold ? _markers.MARKER_TYPES_CONFIG.SPOT_EXIT.type : _markers.MARKER_TYPES_CONFIG.SPOT_SELL.type, +contract_info.exit_tick_time, +contract_info.exit_tick, !is_user_sold ? {
-        spot_value: '' + contract_info.exit_tick,
+    var exit_tick = decimal_places ? (+contract_info.exit_tick).toFixed(decimal_places) : contract_info.exit_tick;
+
+    return createMarkerConfig(!is_user_sold ? _markers.MARKER_TYPES_CONFIG.SPOT_EXIT.type : _markers.MARKER_TYPES_CONFIG.SPOT_SELL.type, +contract_info.exit_tick_time, +exit_tick, !is_user_sold ? {
+        spot_value: '' + exit_tick,
         spot_epoch: '' + contract_info.exit_tick_time,
         status: '' + (+contract_info.profit > 0 ? 'won' : 'lost'),
         align_label: align_label,
@@ -22558,11 +22565,12 @@ var createMarkerSpotExit = exports.createMarkerSpotExit = function createMarkerS
     } : {});
 };
 
-var createMarkerSpotMiddle = exports.createMarkerSpotMiddle = function createMarkerSpotMiddle(contract_info, tick, idx) {
+var createMarkerSpotMiddle = exports.createMarkerSpotMiddle = function createMarkerSpotMiddle(contract_info, tick, decimal_places, idx) {
     var spot_count = getSpotCount(contract_info, idx);
+    var spot = decimal_places ? (+tick.tick).toFixed(decimal_places) : tick.tick;
 
-    var marker_config = createMarkerConfig(_markers.MARKER_TYPES_CONFIG.SPOT_MIDDLE.type, +tick.epoch, +tick.tick, {
-        spot_value: '' + tick.tick,
+    var marker_config = createMarkerConfig(_markers.MARKER_TYPES_CONFIG.SPOT_MIDDLE.type, +tick.epoch, +spot, {
+        spot_value: '' + spot,
         spot_epoch: '' + tick.epoch,
         align_label: tick.align_label,
         spot_count: spot_count
@@ -22591,6 +22599,8 @@ exports.createChartMarkers = undefined;
 
 var _marker_spots, _marker_lines;
 
+var _activeSymbols = __webpack_require__(/*! ../../Trading/Helpers/active-symbols */ "./src/javascript/app/Stores/Modules/Trading/Helpers/active-symbols.js");
+
 var _chartMarkerHelpers = __webpack_require__(/*! ./chart-marker-helpers */ "./src/javascript/app/Stores/Modules/Contract/Helpers/chart-marker-helpers.js");
 
 var _logic = __webpack_require__(/*! ./logic */ "./src/javascript/app/Stores/Modules/Contract/Helpers/logic.js");
@@ -22598,6 +22608,8 @@ var _logic = __webpack_require__(/*! ./logic */ "./src/javascript/app/Stores/Mod
 var _utility = __webpack_require__(/*! ../../../../../_common/utility */ "./src/javascript/_common/utility.js");
 
 var _markers = __webpack_require__(/*! ../../SmartChart/Constants/markers */ "./src/javascript/app/Stores/Modules/SmartChart/Constants/markers.js");
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -22618,18 +22630,42 @@ var marker_spots = (_marker_spots = {}, _defineProperty(_marker_spots, _markers.
 
 var marker_lines = (_marker_lines = {}, _defineProperty(_marker_lines, _markers.MARKER_TYPES_CONFIG.LINE_START.type, _chartMarkerHelpers.createMarkerStartTime), _defineProperty(_marker_lines, _markers.MARKER_TYPES_CONFIG.LINE_END.type, _chartMarkerHelpers.createMarkerEndTime), _defineProperty(_marker_lines, _markers.MARKER_TYPES_CONFIG.LINE_PURCHASE.type, _chartMarkerHelpers.createMarkerPurchaseTime), _marker_lines);
 
-var addMarker = function addMarker(marker_obj, SmartChartStore, contract_info) {
-    Object.keys(marker_obj).forEach(createMarker);
+var addMarker = function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(marker_obj, SmartChartStore, contract_info) {
+        var decimal_places, createMarker;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        createMarker = function createMarker(marker_type) {
+                            if (marker_type in SmartChartStore.markers) return;
 
-    function createMarker(marker_type) {
-        if (marker_type in SmartChartStore.markers) return;
+                            var marker_config = marker_obj[marker_type](contract_info, decimal_places);
+                            if (marker_config) {
+                                SmartChartStore.createMarker(marker_config);
+                            }
+                        };
 
-        var marker_config = marker_obj[marker_type](contract_info);
-        if (marker_config) {
-            SmartChartStore.createMarker(marker_config);
-        }
-    }
-};
+                        _context.next = 3;
+                        return (0, _activeSymbols.getUnderlyingPipSize)(contract_info.underlying);
+
+                    case 3:
+                        decimal_places = _context.sent;
+
+                        Object.keys(marker_obj).forEach(createMarker);
+
+                    case 5:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, undefined);
+    }));
+
+    return function addMarker(_x, _x2, _x3) {
+        return _ref.apply(this, arguments);
+    };
+}();
 
 var addLabelAlignment = function addLabelAlignment(tick, idx, arr) {
     if (idx > 0 && arr.length) {
@@ -22643,29 +22679,55 @@ var addLabelAlignment = function addLabelAlignment(tick, idx, arr) {
     return tick;
 };
 
-var addTickMarker = function addTickMarker(SmartChartStore, contract_info) {
-    var tick_stream = (0, _utility.unique)(contract_info.tick_stream, 'epoch').map(addLabelAlignment);
+var addTickMarker = function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(SmartChartStore, contract_info) {
+        var tick_stream, decimal_places;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+                switch (_context2.prev = _context2.next) {
+                    case 0:
+                        tick_stream = (0, _utility.unique)(contract_info.tick_stream, 'epoch').map(addLabelAlignment);
+                        _context2.next = 3;
+                        return (0, _activeSymbols.getUnderlyingPipSize)(contract_info.underlying);
 
-    tick_stream.forEach(function (tick, idx) {
-        var is_entry_spot = idx === 0 && +tick.epoch !== contract_info.exit_tick_time;
-        var is_middle_spot = idx > 0 && +tick.epoch !== +contract_info.exit_tick_time;
-        var is_exit_spot = +tick.epoch === +contract_info.exit_tick_time || (0, _chartMarkerHelpers.getSpotCount)(contract_info, idx) === contract_info.tick_count;
+                    case 3:
+                        decimal_places = _context2.sent;
 
-        var marker_config = void 0;
-        if (is_entry_spot) marker_config = (0, _chartMarkerHelpers.createMarkerSpotEntry)(contract_info);
-        if (is_middle_spot) marker_config = (0, _chartMarkerHelpers.createMarkerSpotMiddle)(contract_info, tick, idx);
-        if (is_exit_spot) {
-            tick.align_label = 'top'; // force exit spot label to be 'top' to avoid overlapping
-            marker_config = (0, _chartMarkerHelpers.createMarkerSpotExit)(contract_info, tick, idx);
-        }
 
-        if (marker_config) {
-            if (marker_config.type in SmartChartStore.markers) return;
+                        tick_stream.forEach(function (tick, idx) {
+                            var is_entry_spot = idx === 0 && +tick.epoch !== contract_info.exit_tick_time;
+                            var is_middle_spot = idx > 0 && +tick.epoch !== +contract_info.exit_tick_time;
+                            var is_exit_spot = +tick.epoch === +contract_info.exit_tick_time || (0, _chartMarkerHelpers.getSpotCount)(contract_info, idx) === contract_info.tick_count;
 
-            SmartChartStore.createMarker(marker_config);
-        }
-    });
-};
+                            var marker_config = void 0;
+                            if (is_entry_spot) {
+                                marker_config = (0, _chartMarkerHelpers.createMarkerSpotEntry)(contract_info, decimal_places);
+                            } else if (is_middle_spot) {
+                                marker_config = (0, _chartMarkerHelpers.createMarkerSpotMiddle)(contract_info, tick, decimal_places, idx);
+                            } else if (is_exit_spot) {
+                                tick.align_label = 'top'; // force exit spot label to be 'top' to avoid overlapping
+                                marker_config = (0, _chartMarkerHelpers.createMarkerSpotExit)(contract_info, tick, decimal_places, idx);
+                            }
+
+                            if (marker_config) {
+                                if (marker_config.type in SmartChartStore.markers) return;
+
+                                SmartChartStore.createMarker(marker_config);
+                            }
+                        });
+
+                    case 5:
+                    case 'end':
+                        return _context2.stop();
+                }
+            }
+        }, _callee2, undefined);
+    }));
+
+    return function addTickMarker(_x4, _x5) {
+        return _ref2.apply(this, arguments);
+    };
+}();
 
 /***/ }),
 
@@ -22797,29 +22859,60 @@ exports.getDigitInfo = exports.isDigitContract = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _activeSymbols = __webpack_require__(/*! ../../Trading/Helpers/active-symbols */ "./src/javascript/app/Stores/Modules/Trading/Helpers/active-symbols.js");
+
 var _logic = __webpack_require__(/*! ./logic */ "./src/javascript/app/Stores/Modules/Contract/Helpers/logic.js");
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var isDigitContract = exports.isDigitContract = function isDigitContract(contract_type) {
     return (/digit/i.test(contract_type)
     );
 };
 
-var getDigitInfo = exports.getDigitInfo = function getDigitInfo(digits_info, contract_info) {
-    var tick_stream = contract_info.tick_stream;
+var getDigitInfo = exports.getDigitInfo = function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(digits_info, contract_info) {
+        var tick_stream, _getLastTickFromTickS, tick, epoch, decimal_places, spot, current;
 
-    var _getLastTickFromTickS = (0, _logic.getLastTickFromTickStream)(tick_stream),
-        tick = _getLastTickFromTickS.tick,
-        epoch = _getLastTickFromTickS.epoch;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        tick_stream = contract_info.tick_stream;
+                        _getLastTickFromTickS = (0, _logic.getLastTickFromTickStream)(tick_stream), tick = _getLastTickFromTickS.tick, epoch = _getLastTickFromTickS.epoch;
 
-    if (!tick || !epoch) return {}; // filter out empty responses
+                        if (!(!tick || !epoch)) {
+                            _context.next = 4;
+                            break;
+                        }
 
-    var current = epoch in digits_info ? {} : // filter out duplicated responses
-    createDigitInfo(tick, epoch);
+                        return _context.abrupt('return', {});
 
-    return _extends({}, current);
-};
+                    case 4:
+                        _context.next = 6;
+                        return (0, _activeSymbols.getUnderlyingPipSize)(contract_info.underlying);
+
+                    case 6:
+                        decimal_places = _context.sent;
+                        spot = decimal_places ? tick.toFixed(decimal_places) : tick;
+                        current = epoch in digits_info ? {} : // filter out duplicated responses
+                        createDigitInfo(spot, epoch);
+                        return _context.abrupt('return', _extends({}, current));
+
+                    case 10:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, undefined);
+    }));
+
+    return function getDigitInfo(_x, _x2) {
+        return _ref.apply(this, arguments);
+    };
+}();
 
 var createDigitInfo = function createDigitInfo(spot, spot_time) {
     var digit = +('' + spot).slice(-1);
@@ -22984,6 +23077,10 @@ var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
+var _socket_base = __webpack_require__(/*! ../../../../_common/base/socket_base */ "./src/javascript/_common/base/socket_base.js");
+
+var _socket_base2 = _interopRequireDefault(_socket_base);
+
 var _utility = __webpack_require__(/*! ../../../../_common/utility */ "./src/javascript/_common/utility.js");
 
 var _localize = __webpack_require__(/*! ../../../../_common/localize */ "./src/javascript/_common/localize.js");
@@ -23007,6 +23104,8 @@ var _baseStore = __webpack_require__(/*! ../../base-store */ "./src/javascript/a
 var _baseStore2 = _interopRequireDefault(_baseStore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -23072,8 +23171,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ContractStore.__proto__ || Object.getPrototypeOf(ContractStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'contract_id', _descriptor, _this), _initDefineProp(_this, 'contract_info', _descriptor2, _this), _initDefineProp(_this, 'digits_info', _descriptor3, _this), _initDefineProp(_this, 'sell_info', _descriptor4, _this), _initDefineProp(_this, 'has_error', _descriptor5, _this), _initDefineProp(_this, 'error_message', _descriptor6, _this), _initDefineProp(_this, 'is_sell_requested', _descriptor7, _this), _initDefineProp(_this, 'replay_contract_id', _descriptor8, _this), _initDefineProp(_this, 'replay_indicative_status', _descriptor9, _this), _initDefineProp(_this, 'replay_info', _descriptor10, _this), _initDefineProp(_this, 'is_replay_static_chart', _descriptor11, _this), _this.chart_type = 'mountain', _this.is_from_positions = false, _this.is_ongoing_contract = false, _this.replay_prev_indicative = 0, _this.replay_indicative = 0, _this.should_forget_first = false, _this.handleSubscribeProposalOpenContract = function (contract_id, cb) {
-            // TODO: remove .toString() when API is ready
-            var proposal_open_contract_request = [contract_id.toString(), cb, false];
+            var proposal_open_contract_request = [contract_id, cb, false];
 
             if (_this.should_forget_first) {
                 _Services.WS.forgetAll('proposal_open_contract').then(function () {
@@ -23159,7 +23257,9 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
     }, {
         key: 'onMount',
         value: function onMount(contract_id, is_from_positions) {
-            if (contract_id === +this.contract_id) return;
+            var _this2 = this;
+
+            if (contract_id === this.contract_id) return;
             if (this.root_store.modules.smart_chart.is_contract_mode) this.onCloseContract();
             this.onSwitchAccount(this.accountSwitcherListener.bind(null));
             this.has_error = false;
@@ -23175,18 +23275,24 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
                 }
                 this.smart_chart.saveAndClearTradeChartLayout('contract');
                 this.smart_chart.setContractMode(true);
-                this.handleSubscribeProposalOpenContract(this.contract_id, this.updateProposal);
+                _socket_base2.default.wait('authorize').then(function () {
+                    _this2.handleSubscribeProposalOpenContract(_this2.contract_id, _this2.updateProposal);
+                });
             }
         }
     }, {
         key: 'onMountReplay',
         value: function onMountReplay(contract_id) {
+            var _this3 = this;
+
             if (contract_id) {
                 this.contract_info = {};
                 this.smart_chart = this.root_store.modules.smart_chart;
                 this.smart_chart.setContractMode(true);
                 this.replay_contract_id = contract_id;
-                this.handleSubscribeProposalOpenContract(this.replay_contract_id, this.populateConfig);
+                _socket_base2.default.wait('authorize').then(function () {
+                    _this3.handleSubscribeProposalOpenContract(_this3.replay_contract_id, _this3.populateConfig);
+                });
             }
         }
     }, {
@@ -23208,11 +23314,11 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
     }, {
         key: 'accountSwitcherListener',
         value: function accountSwitcherListener() {
-            var _this2 = this;
+            var _this4 = this;
 
             this.smart_chart.setContractMode(false);
             return new Promise(function (resolve) {
-                return resolve(_this2.onCloseContract());
+                return resolve(_this4.onCloseContract());
             });
         }
     }, {
@@ -23257,7 +23363,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
                 this.smart_chart.setIsChartLoading(false);
                 return;
             }
-            if (+response.proposal_open_contract.contract_id !== +this.replay_contract_id) return;
+            if (+response.proposal_open_contract.contract_id !== this.replay_contract_id) return;
 
             this.replay_info = response.proposal_open_contract;
 
@@ -23315,7 +23421,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
                 this.smart_chart.setIsChartLoading(false);
                 return;
             }
-            if (+response.proposal_open_contract.contract_id !== +this.contract_id) return;
+            if (+response.proposal_open_contract.contract_id !== this.contract_id) return;
 
             this.contract_info = response.proposal_open_contract;
 
@@ -23330,11 +23436,40 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
         }
     }, {
         key: 'handleDigits',
-        value: function handleDigits(contract_info) {
-            if (this.is_digit_contract) {
-                (0, _mobx.extendObservable)(this.digits_info, (0, _digits.getDigitInfo)(this.digits_info, contract_info));
+        value: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(contract_info) {
+                var digit_info;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                if (!this.is_digit_contract) {
+                                    _context.next = 5;
+                                    break;
+                                }
+
+                                _context.next = 3;
+                                return (0, _digits.getDigitInfo)(this.digits_info, contract_info);
+
+                            case 3:
+                                digit_info = _context.sent;
+
+                                (0, _mobx.extendObservable)(this.digits_info, digit_info);
+
+                            case 5:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function handleDigits(_x) {
+                return _ref2.apply(this, arguments);
             }
-        }
+
+            return handleDigits;
+        }()
     }, {
         key: 'onClickSell',
         value: function onClickSell(contract_id) {
@@ -23886,7 +24021,7 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
 
                             case 11:
                                 this.pushNewPosition(new_pos);
-                                _Services.WS.subscribeProposalOpenContract(contract_id.toString(), this.proposalOpenContractHandler, false);
+                                _Services.WS.subscribeProposalOpenContract(contract_id, this.proposalOpenContractHandler, false);
                                 _context.next = 21;
                                 break;
 
@@ -23913,7 +24048,7 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
                             case 19:
 
                                 this.positions[i].is_loading = true;
-                                _Services.WS.subscribeProposalOpenContract(contract_id.toString(), this.populateResultDetails, false);
+                                _Services.WS.subscribeProposalOpenContract(contract_id, this.populateResultDetails, false);
 
                             case 21:
                             case 'end':
@@ -24159,9 +24294,9 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
             var i = _this5.getPositionIndexById(contract_response.contract_id);
 
             _this5.positions[i].contract_info = contract_response;
-            _this5.positions[i].exit_spot = contract_response.exit_tick || contract_response.current_spot; // workaround if no exit_tick in proposal_open_contract, use latest spot
             _this5.positions[i].duration = (0, _details.getDurationTime)(contract_response);
             _this5.positions[i].duration_unit = (0, _details.getDurationUnitText)((0, _details.getDurationPeriod)(contract_response));
+            _this5.positions[i].exit_spot = contract_response.exit_tick || contract_response.current_spot; // workaround if no exit_tick in proposal_open_contract, use latest spot
             _this5.positions[i].is_valid_to_sell = (0, _logic.isValidToSell)(contract_response);
             _this5.positions[i].result = (0, _logic.getDisplayStatus)(contract_response);
             _this5.positions[i].profit_loss = +contract_response.profit;
@@ -26299,7 +26434,7 @@ exports.default = getValidationRules;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.getSymbolDisplayName = exports.pickDefaultSymbol = exports.isMarketClosed = exports.showUnavailableLocationError = undefined;
+exports.getUnderlyingPipSize = exports.getSymbolDisplayName = exports.pickDefaultSymbol = exports.isMarketClosed = exports.showUnavailableLocationError = undefined;
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
@@ -26316,6 +26451,8 @@ var _login = __webpack_require__(/*! ../../../../../_common/base/login */ "./src
 var _Services = __webpack_require__(/*! ../../../../Services */ "./src/javascript/app/Services/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var showUnavailableLocationError = exports.showUnavailableLocationError = (0, _mobx.flow)( /*#__PURE__*/regeneratorRuntime.mark(function _callee(showError) {
     var website_status, residence_list, clients_country_code, clients_country_text;
@@ -26409,6 +26546,46 @@ var getSymbolDisplayName = exports.getSymbolDisplayName = function getSymbolDisp
         return symbol_info.symbol.toUpperCase() === symbol.toUpperCase();
     }) || { display_name: '' }).display_name;
 };
+
+var countDecimalPlaces = function countDecimalPlaces(num) {
+    if (!isNaN(num)) {
+        var str = num.toString();
+        if (str.indexOf('.') !== -1) {
+            return str.split('.')[1].length;
+        }
+    }
+    return 0;
+};
+
+var getUnderlyingPipSize = exports.getUnderlyingPipSize = function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(underlying) {
+        var active_symbols, obj_symbols;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+                switch (_context2.prev = _context2.next) {
+                    case 0:
+                        _context2.next = 2;
+                        return _socket_base2.default.send({ active_symbols: 'brief' }, { skip_cache_update: true, msg_type: 'active_symbols' });
+
+                    case 2:
+                        active_symbols = _context2.sent;
+                        obj_symbols = active_symbols.active_symbols.find(function (symbols) {
+                            return symbols.symbol === underlying;
+                        }) || {};
+                        return _context2.abrupt('return', countDecimalPlaces(obj_symbols.pip || 0.001));
+
+                    case 5:
+                    case 'end':
+                        return _context2.stop();
+                }
+            }
+        }, _callee2, undefined);
+    }));
+
+    return function getUnderlyingPipSize(_x4) {
+        return _ref.apply(this, arguments);
+    };
+}();
 
 /***/ }),
 
@@ -28078,7 +28255,7 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                             buy_price: response.buy.buy_price
                         });
                         // toggle smartcharts to contract mode
-                        var contract_id = (0, _utility.getPropertyValue)(response, ['buy', 'contract_id']);
+                        var contract_id = +(0, _utility.getPropertyValue)(response, ['buy', 'contract_id']);
                         if (contract_id) {
                             _this5.root_store.modules.contract.onMount(contract_id);
                             _this5.root_store.ui.openPositionsDrawer();
@@ -31170,8 +31347,11 @@ var toMoment = exports.toMoment = function toMoment(value) {
   if (value instanceof _moment2.default && value.isValid() && value.isUTC()) return value; // returns if already a moment object
   if (typeof value === 'number') return epochToMoment(value); // returns epochToMoment() if not a date
 
-  return (/invalid/i.test((0, _moment2.default)(value)) ? _moment2.default.utc(value, 'DD MMM YYYY') : _moment2.default.utc(value)
-  );
+  if (/invalid/i.test((0, _moment2.default)(value))) {
+    var today_moment = (0, _moment2.default)();
+    return value > today_moment.utc().daysInMonth() ? _moment2.default.utc(today_moment.add(value, 'd'), 'DD MMM YYYY') : _moment2.default.utc(value, 'DD MMM YYYY'); // returns target date
+  }
+  return _moment2.default.utc(value);
 };
 
 /**
