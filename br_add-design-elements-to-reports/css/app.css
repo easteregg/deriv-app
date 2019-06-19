@@ -5513,9 +5513,11 @@ html {
   .table__foot .table__row {
     border-bottom: none; }
     .theme--light .table__foot .table__row {
-      border-top: 2px solid #f4f4f6; }
+      border-top: 2px solid #f4f4f6;
+      color: rgba(0, 0, 0, 0.8); }
     .theme--dark .table__foot .table__row {
-      border-top: 2px solid #101320; }
+      border-top: 2px solid #101320;
+      color: #ffffff; }
 
 /** @define datepicker */
 .datepicker {
