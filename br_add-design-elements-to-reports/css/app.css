@@ -4337,7 +4337,7 @@ html {
   grid-template-columns: 128px minmax(-webkit-min-content, 280px) minmax(-webkit-min-content, 280px);
   grid-template-columns: 128px minmax(min-content, 280px) minmax(min-content, 280px);
   position: absolute;
-  top: 51px;
+  top: 36px;
   right: 0;
   z-index: 99;
   border-radius: 4px; }
@@ -4384,7 +4384,23 @@ html {
         .theme--light .composite-calendar__input-fields > .input-field .input {
           background-color: #f4f4f6; }
         .theme--dark .composite-calendar__input-fields > .input-field .input {
-          background-color: #191c31; }
+          background-color: #101320; }
+        .theme--light .composite-calendar__input-fields > .input-field .input::-webkit-input-placeholder {
+          color: rgba(0, 0, 0, 0.8); }
+        .theme--light .composite-calendar__input-fields > .input-field .input::-moz-placeholder {
+          color: rgba(0, 0, 0, 0.8); }
+        .theme--light .composite-calendar__input-fields > .input-field .input::-ms-input-placeholder {
+          color: rgba(0, 0, 0, 0.8); }
+        .theme--light .composite-calendar__input-fields > .input-field .input::placeholder {
+          color: rgba(0, 0, 0, 0.8); }
+        .theme--dark .composite-calendar__input-fields > .input-field .input::-webkit-input-placeholder {
+          color: #7f8397; }
+        .theme--dark .composite-calendar__input-fields > .input-field .input::-moz-placeholder {
+          color: #7f8397; }
+        .theme--dark .composite-calendar__input-fields > .input-field .input::-ms-input-placeholder {
+          color: #7f8397; }
+        .theme--dark .composite-calendar__input-fields > .input-field .input::placeholder {
+          color: #7f8397; }
     .composite-calendar__input-fields > .input-field:not(:first-child) {
       margin-left: 8px; }
   .theme--light .composite-calendar > .first-month .calendar__body, .theme--light .composite-calendar > .second-month .calendar__body {
