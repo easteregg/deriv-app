@@ -4386,13 +4386,13 @@ html {
         .theme--dark .composite-calendar__input-fields > .input-field .input {
           background-color: #101320; }
         .theme--light .composite-calendar__input-fields > .input-field .input::-webkit-input-placeholder {
-          color: rgba(0, 0, 0, 0.8); }
+          color: rgba(0, 0, 0, 0.4); }
         .theme--light .composite-calendar__input-fields > .input-field .input::-moz-placeholder {
-          color: rgba(0, 0, 0, 0.8); }
+          color: rgba(0, 0, 0, 0.4); }
         .theme--light .composite-calendar__input-fields > .input-field .input::-ms-input-placeholder {
-          color: rgba(0, 0, 0, 0.8); }
+          color: rgba(0, 0, 0, 0.4); }
         .theme--light .composite-calendar__input-fields > .input-field .input::placeholder {
-          color: rgba(0, 0, 0, 0.8); }
+          color: rgba(0, 0, 0, 0.4); }
         .theme--dark .composite-calendar__input-fields > .input-field .input::-webkit-input-placeholder {
           color: #7f8397; }
         .theme--dark .composite-calendar__input-fields > .input-field .input::-moz-placeholder {
