@@ -22019,25 +22019,8 @@ var WS = function () {
         return _socket_base2.default.send({ portfolio: 1 });
     };
 
-    var profitTable = function profitTable(params) {
-        var _params$date_to = params.date_to,
-            date_to = _params$date_to === undefined ? Math.floor(new Date().getTime() / 1000) : _params$date_to,
-            _params$date_from = params.date_from,
-            date_from = _params$date_from === undefined ? 0 : _params$date_from,
-            _params$limit = params.limit,
-            limit = _params$limit === undefined ? 50 : _params$limit,
-            _params$offset = params.offset,
-            offset = _params$offset === undefined ? 0 : _params$offset;
-
-
-        return _socket_base2.default.send({
-            profit_table: 1,
-            description: 1,
-            date_from: date_from,
-            date_to: date_to,
-            offset: offset,
-            limit: limit
-        });
+    var profitTable = function profitTable(limit, offset, date_boundaries) {
+        return _socket_base2.default.send(_extends({ profit_table: 1, description: 1, limit: limit, offset: offset }, date_boundaries));
     };
 
     var proposalOpenContract = function proposalOpenContract(contract_id) {
@@ -24329,6 +24312,44 @@ exports.default = PortfolioStore;
 
 /***/ }),
 
+/***/ "./src/javascript/app/Stores/Modules/Profit/Helpers/format-request.js":
+/*!****************************************************************************!*\
+  !*** ./src/javascript/app/Stores/Modules/Profit/Helpers/format-request.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _Date = __webpack_require__(/*! ../../../../Utils/Date */ "./src/javascript/app/Utils/Date/index.js");
+
+var getDateTo = function getDateTo(partial_fetch_time, date_to) {
+    if (partial_fetch_time) {
+        return (0, _Date.toMoment)().endOf('day').unix();
+    } else if (date_to) {
+        return (0, _Date.epochToMoment)(date_to).add(1, 'd').subtract(1, 's').unix();
+    }
+    return (0, _Date.toMoment)().endOf('day').unix();
+};
+
+var getDateBoundaries = function getDateBoundaries(date_from, date_to, partial_fetch_time) {
+    var should_load_partially = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+    return _extends({}, (date_from || should_load_partially) && { date_from: partial_fetch_time || date_from }, (date_to || should_load_partially) && {
+        date_to: getDateTo(partial_fetch_time, date_to)
+    });
+};
+
+exports.default = getDateBoundaries;
+
+/***/ }),
+
 /***/ "./src/javascript/app/Stores/Modules/Profit/Helpers/format-response.js":
 /*!*****************************************************************************!*\
   !*** ./src/javascript/app/Stores/Modules/Profit/Helpers/format-response.js ***!
@@ -24395,17 +24416,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+
+var _lodash = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
 var _Services = __webpack_require__(/*! ../../../Services */ "./src/javascript/app/Services/index.js");
 
 var _Date = __webpack_require__(/*! ../../../Utils/Date */ "./src/javascript/app/Utils/Date/index.js");
+
+var _formatRequest = __webpack_require__(/*! ./Helpers/format-request */ "./src/javascript/app/Stores/Modules/Profit/Helpers/format-request.js");
+
+var _formatRequest2 = _interopRequireDefault(_formatRequest);
 
 var _formatResponse = __webpack_require__(/*! ./Helpers/format-response */ "./src/javascript/app/Stores/Modules/Profit/Helpers/format-response.js");
 
@@ -24469,6 +24496,7 @@ function _initializerWarningHelper(descriptor, context) {
 }
 
 var batch_size = 50;
+var delay_on_scroll_time = 150;
 
 var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, _dec5 = _mobx.action.bound, _dec6 = _mobx.action.bound, _dec7 = _mobx.action.bound, _dec8 = _mobx.action.bound, _dec9 = _mobx.action.bound, (_class = function (_BaseStore) {
     _inherits(ProfitTableStore, _BaseStore);
@@ -24484,13 +24512,18 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProfitTableStore.__proto__ || Object.getPrototypeOf(ProfitTableStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'data', _descriptor, _this), _initDefineProp(_this, 'date_from', _descriptor2, _this), _initDefineProp(_this, 'date_to', _descriptor3, _this), _initDefineProp(_this, 'error', _descriptor4, _this), _initDefineProp(_this, 'has_loaded_all', _descriptor5, _this), _initDefineProp(_this, 'is_loading', _descriptor6, _this), _temp), _possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProfitTableStore.__proto__ || Object.getPrototypeOf(ProfitTableStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'data', _descriptor, _this), _initDefineProp(_this, 'date_from', _descriptor2, _this), _initDefineProp(_this, 'date_to', _descriptor3, _this), _initDefineProp(_this, 'error', _descriptor4, _this), _initDefineProp(_this, 'has_loaded_all', _descriptor5, _this), _initDefineProp(_this, 'is_loading', _descriptor6, _this), _initDefineProp(_this, 'partial_fetch_time', _descriptor7, _this), _this.fetchOnScroll = (0, _lodash2.default)(function (left) {
+            if (left < 2000) {
+                _this.fetchNextBatch();
+            }
+        }, delay_on_scroll_time), _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(ProfitTableStore, [{
         key: 'fetchNextBatch',
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var should_load_partially = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
                 var response;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
@@ -24504,18 +24537,16 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
                                 return _context.abrupt('return');
 
                             case 2:
-
                                 this.is_loading = true;
 
                                 _context.next = 5;
-                                return _Services.WS.profitTable(_extends({
-                                    offset: this.data.length
-                                }, this.date_from && { date_from: this.date_from }, this.date_to && { date_to: (0, _Date.epochToMoment)(this.date_to).add(1, 'd').subtract(1, 's').unix() }));
+                                return _Services.WS.profitTable(batch_size, !should_load_partially ? this.data.length : undefined, (0, _formatRequest2.default)(this.date_from, this.date_to, this.partial_fetch_time, should_load_partially));
 
                             case 5:
                                 response = _context.sent;
 
-                                this.profitTableResponseHandler(response);
+
+                                this.profitTableResponseHandler(response, should_load_partially);
 
                             case 7:
                             case 'end':
@@ -24536,6 +24567,8 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
         value: function profitTableResponseHandler(response) {
             var _this2 = this;
 
+            var should_load_partially = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
             if ('error' in response) {
                 this.error = response.error.message;
                 return;
@@ -24545,9 +24578,16 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
                 return (0, _formatResponse.formatProfitTableTransactions)(transaction, _this2.root_store.client.currency, _this2.root_store.modules.trade.active_symbols);
             });
 
-            this.data = [].concat(_toConsumableArray(this.data), _toConsumableArray(formatted_transactions));
-            this.has_loaded_all = formatted_transactions.length < batch_size;
+            if (should_load_partially) {
+                this.data = [].concat(_toConsumableArray(formatted_transactions), _toConsumableArray(this.data));
+            } else {
+                this.data = [].concat(_toConsumableArray(this.data), _toConsumableArray(formatted_transactions));
+            }
+            this.has_loaded_all = !should_load_partially && formatted_transactions.length < batch_size;
             this.is_loading = false;
+            if (this.data.length > 0) {
+                this.partial_fetch_time = (0, _Date.toMoment)().unix();
+            }
         }
     }, {
         key: 'handleScroll',
@@ -24558,23 +24598,29 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
                 clientHeight = _event$target.clientHeight;
 
             var left_to_scroll = scrollHeight - (scrollTop + clientHeight);
-            if (left_to_scroll < 2000) {
-                this.fetchNextBatch();
-            }
+            this.fetchOnScroll(left_to_scroll);
         }
     }, {
         key: 'onMount',
         value: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                var _this3 = this;
+
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
+                                this.assertHasValidCache(this.client_currency, this.clearDateFilter, this.clearTable, _Services.WS.forgetAll.bind(null, 'proposal'));
                                 this.onSwitchAccount(this.accountSwitcherListener);
-                                _context2.next = 3;
-                                return this.fetchNextBatch();
+                                _context2.next = 4;
+                                return this.fetchNextBatch(true);
 
-                            case 3:
+                            case 4:
+                                (0, _mobx.runInAction)(function () {
+                                    _this3.client_currency = _this3.root_store.client.currency;
+                                });
+
+                            case 5:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -24597,12 +24643,12 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
     }, {
         key: 'accountSwitcherListener',
         value: function accountSwitcherListener() {
-            var _this3 = this;
+            var _this4 = this;
 
             return new Promise(function (resolve) {
-                _this3.clearTable();
-                _this3.clearDateFilter();
-                return resolve(_this3.fetchNextBatch());
+                _this4.clearTable();
+                _this4.clearDateFilter();
+                return resolve(_this4.fetchNextBatch());
             });
         }
     }, {
@@ -24617,15 +24663,16 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
         value: function clearDateFilter() {
             this.date_from = 0;
             this.date_to = 0;
+            this.partial_fetch_time = false;
         }
     }, {
         key: 'handleDateChange',
         value: function handleDateChange(date_values) {
-            var _this4 = this;
+            var _this5 = this;
 
             Object.keys(date_values).forEach(function (key) {
                 if (date_values[key]) {
-                    _this4['date_' + key] = date_values[key];
+                    _this5['date_' + key] = date_values[key];
                 }
             });
             this.clearTable();
@@ -24699,6 +24746,11 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
     enumerable: true,
     initializer: function initializer() {
         return false;
+    }
+}), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, 'partial_fetch_time', [_mobx.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+        return 0;
     }
 }), _applyDecoratedDescriptor(_class.prototype, 'total_profit', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'total_profit'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'is_empty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'is_empty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'has_selected_date', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'has_selected_date'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'fetchNextBatch', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'fetchNextBatch'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'profitTableResponseHandler', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'profitTableResponseHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleScroll', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'handleScroll'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'onMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'totals', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'totals'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'accountSwitcherListener', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'accountSwitcherListener'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'clearTable', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'clearTable'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'clearDateFilter', [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, 'clearDateFilter'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleDateChange', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'handleDateChange'), _class.prototype)), _class));
 exports.default = ProfitTableStore;
@@ -25781,11 +25833,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
+
+var _lodash = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
@@ -25794,6 +25848,10 @@ var _Services = __webpack_require__(/*! ../../../Services */ "./src/javascript/a
 var _Date = __webpack_require__(/*! ../../../Utils/Date */ "./src/javascript/app/Utils/Date/index.js");
 
 var _formatResponse = __webpack_require__(/*! ./Helpers/format-response */ "./src/javascript/app/Stores/Modules/Statement/Helpers/format-response.js");
+
+var _formatRequest = __webpack_require__(/*! ../Profit/Helpers/format-request */ "./src/javascript/app/Stores/Modules/Profit/Helpers/format-request.js");
+
+var _formatRequest2 = _interopRequireDefault(_formatRequest);
 
 var _baseStore = __webpack_require__(/*! ../../base-store */ "./src/javascript/app/Stores/base-store.js");
 
@@ -25855,6 +25913,7 @@ function _initializerWarningHelper(descriptor, context) {
 }
 
 var batch_size = 100; // request response limit
+var delay_on_scroll_time = 150; // fetch debounce delay on scroll
 
 var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, _dec5 = _mobx.action.bound, _dec6 = _mobx.action.bound, _dec7 = _mobx.action.bound, _dec8 = _mobx.action.bound, _dec9 = _mobx.action.bound, (_class = function (_BaseStore) {
     _inherits(StatementStore, _BaseStore);
@@ -25870,8 +25929,16 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StatementStore.__proto__ || Object.getPrototypeOf(StatementStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'data', _descriptor, _this), _initDefineProp(_this, 'is_loading', _descriptor2, _this), _initDefineProp(_this, 'has_loaded_all', _descriptor3, _this), _initDefineProp(_this, 'date_from', _descriptor4, _this), _initDefineProp(_this, 'date_to', _descriptor5, _this), _initDefineProp(_this, 'error', _descriptor6, _this), _temp), _possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StatementStore.__proto__ || Object.getPrototypeOf(StatementStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'data', _descriptor, _this), _initDefineProp(_this, 'is_loading', _descriptor2, _this), _initDefineProp(_this, 'has_loaded_all', _descriptor3, _this), _initDefineProp(_this, 'date_from', _descriptor4, _this), _initDefineProp(_this, 'date_to', _descriptor5, _this), _initDefineProp(_this, 'error', _descriptor6, _this), _initDefineProp(_this, 'client_currency', _descriptor7, _this), _initDefineProp(_this, 'partial_fetch_time', _descriptor8, _this), _this.fetchOnScroll = (0, _lodash2.default)(function (left) {
+            if (left < 2000) {
+                _this.fetchNextBatch();
+            }
+        }, delay_on_scroll_time), _temp), _possibleConstructorReturn(_this, _ret);
     }
+
+    // `client_currency` is only used to detect if this is in sync with the client-store, don't rely on
+    // this for calculations. Use the client.currency instead.
+
 
     _createClass(StatementStore, [{
         key: 'clearTable',
@@ -25879,6 +25946,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
             this.data = [];
             this.has_loaded_all = false;
             this.is_loading = false;
+            this.partial_fetch_time = false;
         }
     }, {
         key: 'clearDateFilter',
@@ -25890,6 +25958,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         key: 'fetchNextBatch',
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var should_load_partially = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
                 var response;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
@@ -25903,16 +25972,15 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
                                 return _context.abrupt('return');
 
                             case 2:
-
                                 this.is_loading = true;
 
                                 _context.next = 5;
-                                return _Services.WS.statement(batch_size, this.data.length, _extends({}, this.date_from && { date_from: this.date_from }, this.date_to && { date_to: (0, _Date.epochToMoment)(this.date_to).add(1, 'd').subtract(1, 's').unix() }));
+                                return _Services.WS.statement(batch_size, !should_load_partially ? this.data.length : undefined, (0, _formatRequest2.default)(this.date_from, this.date_to, this.partial_fetch_time, should_load_partially));
 
                             case 5:
                                 response = _context.sent;
 
-                                this.statementHandler(response);
+                                this.statementHandler(response, should_load_partially);
 
                             case 7:
                             case 'end':
@@ -25930,7 +25998,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         }()
     }, {
         key: 'statementHandler',
-        value: function statementHandler(response) {
+        value: function statementHandler(response, should_load_partially) {
             var _this2 = this;
 
             if ('error' in response) {
@@ -25942,9 +26010,18 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
                 return (0, _formatResponse.formatStatementTransaction)(transaction, _this2.root_store.client.currency, _this2.root_store.modules.trade.active_symbols);
             });
 
-            this.data = [].concat(_toConsumableArray(this.data), _toConsumableArray(formatted_transactions));
-            this.has_loaded_all = formatted_transactions.length < batch_size;
+            if (should_load_partially) {
+                this.data = [].concat(_toConsumableArray(formatted_transactions), _toConsumableArray(this.data));
+            } else {
+                this.data = [].concat(_toConsumableArray(this.data), _toConsumableArray(formatted_transactions));
+            }
+            this.has_loaded_all = !should_load_partially && formatted_transactions.length < batch_size;
             this.is_loading = false;
+            if (this.data.length > 0 && !this.has_loaded_all) {
+                this.partial_fetch_time = (0, _Date.toMoment)().unix();
+            } else if (this.has_loaded_all) {
+                this.partial_fetch_time = 0;
+            }
         }
     }, {
         key: 'handleDateChange',
@@ -25969,9 +26046,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
 
             var left_to_scroll = scrollHeight - (scrollTop + clientHeight);
 
-            if (left_to_scroll < 2000) {
-                this.fetchNextBatch();
-            }
+            this.fetchOnScroll(left_to_scroll);
         }
     }, {
         key: 'accountSwitcherListener',
@@ -25988,15 +26063,24 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         key: 'onMount',
         value: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                var _this5 = this;
+
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
-                                this.onSwitchAccount(this.accountSwitcherListener);
-                                _context2.next = 3;
-                                return this.fetchNextBatch();
+                                this.assertHasValidCache(this.client_currency, this.clearDateFilter, this.clearTable, _Services.WS.forgetAll.bind(null, 'proposal'));
 
-                            case 3:
+                                this.onSwitchAccount(this.accountSwitcherListener);
+                                _context2.next = 4;
+                                return this.fetchNextBatch(true);
+
+                            case 4:
+                                (0, _mobx.runInAction)(function () {
+                                    _this5.client_currency = _this5.root_store.client.currency;
+                                });
+
+                            case 5:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -26058,6 +26142,16 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
     enumerable: true,
     initializer: function initializer() {
         return '';
+    }
+}), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, 'client_currency', [_mobx.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+        return '';
+    }
+}), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, 'partial_fetch_time', [_mobx.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+        return 0;
     }
 }), _applyDecoratedDescriptor(_class.prototype, 'is_empty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'is_empty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'has_selected_date', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'has_selected_date'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'clearTable', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'clearTable'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'clearDateFilter', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'clearDateFilter'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'fetchNextBatch', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'fetchNextBatch'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'statementHandler', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'statementHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleDateChange', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'handleDateChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleScroll', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'handleScroll'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'accountSwitcherListener', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'accountSwitcherListener'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, 'onMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype)), _class));
 exports.default = StatementStore;
@@ -29020,7 +29114,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _desc, _value, _class, _descriptor, _descriptor2, _class2, _temp;
+var _dec, _dec2, _dec3, _dec4, _desc, _value, _class, _descriptor, _descriptor2, _class2, _temp;
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
@@ -29088,7 +29182,7 @@ function _initializerWarningHelper(descriptor, context) {
  *  1. Creating snapshot object from the store.
  *  2. Saving the store's snapshot in local/session storage and keeping them in sync.
  */
-var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, (_class = (_temp = _class2 = function () {
+var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, (_class = (_temp = _class2 = function () {
 
     /**
      * Constructor of the base class that gets properties' name of child which should be saved in storages
@@ -29461,6 +29555,21 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
         value: function onUnmount() {
             this.disposeSwitchAccount();
         }
+    }, {
+        key: 'assertHasValidCache',
+        value: function assertHasValidCache(currency) {
+            // account was changed when this was unmounted.
+            if (this.root_store.client.currency !== currency) {
+                for (var _len = arguments.length, reactions = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                    reactions[_key - 1] = arguments[_key];
+                }
+
+                reactions.forEach(function (act) {
+                    return act();
+                });
+                this.partial_fetch_time = false;
+            }
+        }
     }]);
 
     return BaseStore;
@@ -29477,7 +29586,7 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     initializer: function initializer() {
         return {};
     }
-}), _applyDecoratedDescriptor(_class.prototype, 'retrieveFromStorage', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'retrieveFromStorage'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setValidationErrorMessages', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setValidationErrorMessages'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setValidationRules', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setValidationRules'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'addRule', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'addRule'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'validateProperty', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'validateProperty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'validateAllProperties', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'validateAllProperties'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onSwitchAccount', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'onSwitchAccount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'disposeSwitchAccount', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'disposeSwitchAccount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype)), _class));
+}), _applyDecoratedDescriptor(_class.prototype, 'retrieveFromStorage', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'retrieveFromStorage'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setValidationErrorMessages', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setValidationErrorMessages'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setValidationRules', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setValidationRules'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'addRule', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'addRule'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'validateProperty', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'validateProperty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'validateAllProperties', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'validateAllProperties'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onSwitchAccount', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'onSwitchAccount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'disposeSwitchAccount', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'disposeSwitchAccount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'assertHasValidCache', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'assertHasValidCache'), _class.prototype)), _class));
 exports.default = BaseStore;
 
 /***/ }),
