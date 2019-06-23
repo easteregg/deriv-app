@@ -4509,6 +4509,7 @@ html {
   .calendar__body--decade .calendar__cell {
     width: 100%; }
   .calendar__icon {
+    cursor: pointer;
     right: 5%; }
     .calendar__icon--today:hover {
       cursor: pointer; }
