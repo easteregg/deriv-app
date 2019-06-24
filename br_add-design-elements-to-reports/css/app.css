@@ -411,6 +411,9 @@ html {
 .icons-underlying__ic-FRXGBPUSD:before {
   content: url("../images/portfolio/underlying-icons/ic-FRXGBPUSD.svg"); }
 
+.icons-underlying__ic-FRXGBPNZD:before {
+  content: url("../images/portfolio/underlying-icons/ic-FRXGBPNZD.svg"); }
+
 .icons-underlying__ic-FRXGBPZD:before {
   content: url("../images/portfolio/underlying-icons/ic-FRXGBPZD.svg"); }
 
@@ -431,6 +434,9 @@ html {
 
 .icons-underlying__ic-FRXUSDMSX:before {
   content: url("../images/portfolio/underlying-icons/ic-FRXUSDMSX.svg"); }
+
+.icons-underlying__ic-FRXUSDMXN:before {
+  content: url("../images/portfolio/underlying-icons/ic-FRXUSDMXN.svg"); }
 
 .icons-underlying__ic-FRXUSDNOK:before {
   content: url("../images/portfolio/underlying-icons/ic-FRXUSDNOK.svg"); }
