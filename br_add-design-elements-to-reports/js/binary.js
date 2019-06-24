@@ -24207,17 +24207,14 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         key: 'active_positions_totals',
         get: function get() {
             var indicative = 0;
-            var payout = 0;
             var purchase = 0;
 
             this.active_positions.forEach(function (portfolio_pos) {
                 indicative += +portfolio_pos.indicative;
-                payout += +portfolio_pos.payout;
                 purchase += +portfolio_pos.purchase;
             });
             return {
                 indicative: indicative,
-                payout: payout,
                 purchase: purchase
             };
         }
