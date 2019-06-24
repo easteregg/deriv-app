@@ -8652,16 +8652,24 @@ html {
         -ms-flex-pack: end;
             justify-content: flex-end; }
   .open-positions .progress-slider {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-pack: distribute;
-        justify-content: space-around; }
-    .open-positions .progress-slider .progress-slider__track {
-      margin: 2px 0 2px 8px; }
+    border: none;
+    margin: 0; }
+    .open-positions .progress-slider__ticks {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+      .open-positions .progress-slider__ticks-wrapper {
+        margin-top: 6px; }
+      .open-positions .progress-slider__ticks-caption {
+        padding: 0;
+        margin-right: 8px;
+        white-space: nowrap; }
 
 /** @define empty-trade-history; weak*/
 .empty-trade-history {
