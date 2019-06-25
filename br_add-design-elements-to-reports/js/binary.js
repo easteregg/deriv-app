@@ -24697,11 +24697,13 @@ var getDateTo = function getDateTo(partial_fetch_time, date_to) {
     return (0, _Date.toMoment)().endOf('day').unix();
 };
 
+var getDateFrom = function getDateFrom(should_load_partially, partial_fetch_time, date_from) {
+    return should_load_partially && partial_fetch_time ? partial_fetch_time : date_from;
+};
+
 var getDateBoundaries = function getDateBoundaries(date_from, date_to, partial_fetch_time) {
     var should_load_partially = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-    return _extends({}, (date_from || should_load_partially) && { date_from: partial_fetch_time || date_from }, (date_to || should_load_partially) && {
-        date_to: getDateTo(partial_fetch_time, date_to)
-    });
+    return _extends({}, (date_from || should_load_partially) && { date_from: getDateFrom(should_load_partially, partial_fetch_time, date_from) }, (date_to || should_load_partially) && { date_to: getDateTo(partial_fetch_time, date_to) });
 };
 
 exports.default = getDateBoundaries;
