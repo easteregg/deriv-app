@@ -24968,23 +24968,16 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
         key: 'onMount',
         value: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var _this3 = this;
-
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
                                 this.assertHasValidCache(this.client_loginid, this.clearDateFilter, this.clearTable, _Services.WS.forgetAll.bind(null, 'proposal'));
+                                this.client_loginid = this.root_store.client.loginid;
                                 this.onSwitchAccount(this.accountSwitcherListener);
-                                _context2.next = 4;
-                                return this.fetchNextBatch(true);
+                                this.fetchNextBatch(true);
 
                             case 4:
-                                (0, _mobx.runInAction)(function () {
-                                    _this3.client_loginid = _this3.root_store.client.loginid;
-                                });
-
-                            case 5:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -25007,12 +25000,12 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
     }, {
         key: 'accountSwitcherListener',
         value: function accountSwitcherListener() {
-            var _this4 = this;
+            var _this3 = this;
 
             return new Promise(function (resolve) {
-                _this4.clearTable();
-                _this4.clearDateFilter();
-                return resolve(_this4.fetchNextBatch());
+                _this3.clearTable();
+                _this3.clearDateFilter();
+                return resolve(_this3.fetchNextBatch());
             });
         }
     }, {
@@ -25032,11 +25025,11 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
     }, {
         key: 'handleDateChange',
         value: function handleDateChange(date_values) {
-            var _this5 = this;
+            var _this4 = this;
 
             Object.keys(date_values).forEach(function (key) {
                 if (date_values[key]) {
-                    _this5['date_' + key] = date_values[key];
+                    _this4['date_' + key] = date_values[key];
                 }
             });
             this.clearTable();
@@ -26441,24 +26434,16 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         key: 'onMount',
         value: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var _this5 = this;
-
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
                                 this.assertHasValidCache(this.client_loginid, this.clearDateFilter, this.clearTable, _Services.WS.forgetAll.bind(null, 'proposal'));
-
+                                this.client_loginid = this.root_store.client.loginid;
                                 this.onSwitchAccount(this.accountSwitcherListener);
-                                _context2.next = 4;
-                                return this.fetchNextBatch(true);
+                                this.fetchNextBatch(true);
 
                             case 4:
-                                (0, _mobx.runInAction)(function () {
-                                    _this5.client_loginid = _this5.root_store.client.loginid;
-                                });
-
-                            case 5:
                             case 'end':
                                 return _context2.stop();
                         }

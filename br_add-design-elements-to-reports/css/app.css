@@ -8539,6 +8539,8 @@ html {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end; }
+  .profit-table .sell_time, .profit-table .purchase_time {
+    text-align: left; }
 
 /** @define open-positions; weak */
 .open-positions {
