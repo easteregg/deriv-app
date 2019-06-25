@@ -8612,6 +8612,10 @@ html {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between; }
+      .theme--light .open-positions .progress-slider__ticks-step {
+        background: rgba(0, 0, 0, 0.04); }
+      .theme--dark .open-positions .progress-slider__ticks-step {
+        background: #7f8397; }
       .open-positions .progress-slider__ticks-wrapper {
         margin-top: 6px; }
       .open-positions .progress-slider__ticks-caption {
