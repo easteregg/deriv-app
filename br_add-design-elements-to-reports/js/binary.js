@@ -63,7 +63,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"404":"404","account_password":"account_password","api_token":"api_token","authorized_application":"authorized_application","cashier_password":"cashier_password","contract":"contract","financial_assessment":"financial_assessment","limits":"limits","login_history":"login_history","open_positions~portfolio~profit_table~statement":"open_positions~portfolio~profit_table~statement","open_positions~profit_table~statement":"open_positions~profit_table~statement","open_positions":"open_positions","profit_table~statement":"profit_table~statement","profit_table":"profit_table","statement":"statement","portfolio":"portfolio","personal_details":"personal_details","reports":"reports","self_exclusion":"self_exclusion","settings":"settings","vendors~smart_chart":"vendors~smart_chart","smart_chart":"smart_chart"}[chunkId]||chunkId) + "-" + {"0":"75deb21bc2df737b5b03","1":"53327fe1871d5dd9f662","2":"4f07ac2b019fc6055e81","3":"6eead60ce6e484a89f84","4":"3a37d1cdb165ae888d6b","5":"7619865d7ced1814edb6","6":"f66928ac15d3161cf71d","7":"bdfef2d9e35fe5c66cd3","8":"78cbff0e88d19e34e614","9":"a9afc1fa00b8884662a0","10":"11dd32ed22c87c595b49","11":"b3ed2091f296ad5fa3f1","12":"6aea09661391b64cee32","13":"fe4896d6c27d657dc48d","14":"bcfeacaf8ad8f2fed3dc","15":"5b36f9150ca0ff20185e","16":"8cecc671ba9ceb479f56","17":"b8e853ea7f29cda5563e","18":"615aac2a2dbc30087d1a","19":"3aeda260f5e295403d37","20":"40d0b7240db50fd297cd","21":"ddf108a79d421ea833ee","22":"b687efde92cfab074bda","23":"a3179a5b4d415e8905c9","24":"f1eabf358e0a02277251","25":"69de805a9e60ee9532d3","26":"693322b1e24d31951755","27":"7e434eb0e7af3112eb64","28":"d99feb68a05e46fe7e24","29":"21932a2fa2f78d36563b","30":"a0636655749c049c7737","31":"8ebc9babcd75d87dd849","32":"d46e0f8c0a9296348392","33":"09be7eed53eeb610016c","34":"d6c665a26c948152ce30","35":"36bc0bb640bd162dade6","36":"55042fca3041b5eb7a91","37":"23b1dcdbd30dbbb85587","38":"4db811925dfb587a5ae8","39":"0823ea78d3bf7ae54174","40":"eccb523d7bfee4efa6a3","41":"9ecc6c81d71f6db22510","42":"f0e9133f486f3cf46c1b","43":"18447a24460691389120","44":"33aca49d050fad068398","45":"b75183565dbd0229a3ff","46":"47199c93f75a88cd8603","47":"30d53f22a29f48f122a1","48":"e5f3d059a3da939a394e","49":"d5c8e7ffb4d5372252bb","50":"d064a79c0244a9cff8b7","51":"997fd39064fd436abfe0","52":"5e1b000baffbd394c288","53":"f98070f6c5b2382cb163","54":"18b2c3e1288e31596977","55":"23be8fb2545d3c82eda8","56":"fef4b674f5c9c67de492","57":"2f9255215488e183e279","58":"57aedebd7366a2a94274","59":"09239659d741835e0574","60":"5df871633ef479b0e40b","61":"67b3a5dfbaf31f241698","62":"5c8acb1d69b0247d8680","63":"b44d4ef07d3a263c244f","64":"83b918991c47d53a608f","65":"e7328ce487a3e024d9aa","66":"bb9928ac5fc41713ddad","67":"55851b142faa73f72044","404":"fdd90647aa54964fb1ed","account_password":"e80bbb197cad5fe3d04b","api_token":"455796411755cc9d240f","authorized_application":"87b6b5bc246c480c716e","cashier_password":"40a473d15da490ee7be5","contract":"fbe3388a4fbd03519e7b","financial_assessment":"f2b2875bd22a7717c1ad","limits":"b108abb5bcd4b46ba7b5","login_history":"dcb5548da21ab243acf1","open_positions~portfolio~profit_table~statement":"0c2c33d3387a4325c5b8","open_positions~profit_table~statement":"86e0d6f95b2850ad029a","open_positions":"69200ab30147a993acbd","profit_table~statement":"4aec62dc42e012780ae0","profit_table":"006beb981d761e998fb6","statement":"33e011c4b3af4b426034","portfolio":"2ba844396df077541ab1","personal_details":"3f27d12d238da8ef9393","reports":"06693c5e0cd110ea900d","self_exclusion":"7b24d88cd6b9f04ae3d0","settings":"ee411577a3c3a94f2f4e","vendors~smart_chart":"36579b723fce638aaabb","smart_chart":"984f4dd56c53c88f3e8c"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"404":"404","account_password":"account_password","api_token":"api_token","authorized_application":"authorized_application","cashier_password":"cashier_password","contract":"contract","financial_assessment":"financial_assessment","limits":"limits","login_history":"login_history","open_positions~portfolio~profit_table~statement":"open_positions~portfolio~profit_table~statement","open_positions~profit_table~statement":"open_positions~profit_table~statement","open_positions":"open_positions","profit_table~statement":"profit_table~statement","profit_table":"profit_table","statement":"statement","portfolio":"portfolio","personal_details":"personal_details","reports":"reports","self_exclusion":"self_exclusion","settings":"settings","vendors~smart_chart":"vendors~smart_chart","smart_chart":"smart_chart"}[chunkId]||chunkId) + "-" + {"0":"75deb21bc2df737b5b03","1":"53327fe1871d5dd9f662","2":"4f07ac2b019fc6055e81","3":"6eead60ce6e484a89f84","4":"3a37d1cdb165ae888d6b","5":"7619865d7ced1814edb6","6":"f66928ac15d3161cf71d","7":"bdfef2d9e35fe5c66cd3","8":"78cbff0e88d19e34e614","9":"a9afc1fa00b8884662a0","10":"11dd32ed22c87c595b49","11":"b3ed2091f296ad5fa3f1","12":"6aea09661391b64cee32","13":"fe4896d6c27d657dc48d","14":"bcfeacaf8ad8f2fed3dc","15":"5b36f9150ca0ff20185e","16":"8cecc671ba9ceb479f56","17":"b8e853ea7f29cda5563e","18":"615aac2a2dbc30087d1a","19":"3aeda260f5e295403d37","20":"40d0b7240db50fd297cd","21":"ddf108a79d421ea833ee","22":"b687efde92cfab074bda","23":"a3179a5b4d415e8905c9","24":"f1eabf358e0a02277251","25":"69de805a9e60ee9532d3","26":"693322b1e24d31951755","27":"7e434eb0e7af3112eb64","28":"d99feb68a05e46fe7e24","29":"21932a2fa2f78d36563b","30":"a0636655749c049c7737","31":"8ebc9babcd75d87dd849","32":"d46e0f8c0a9296348392","33":"09be7eed53eeb610016c","34":"d6c665a26c948152ce30","35":"36bc0bb640bd162dade6","36":"55042fca3041b5eb7a91","37":"23b1dcdbd30dbbb85587","38":"4db811925dfb587a5ae8","39":"0823ea78d3bf7ae54174","40":"eccb523d7bfee4efa6a3","41":"9ecc6c81d71f6db22510","42":"f0e9133f486f3cf46c1b","43":"18447a24460691389120","44":"33aca49d050fad068398","45":"b75183565dbd0229a3ff","46":"47199c93f75a88cd8603","47":"30d53f22a29f48f122a1","48":"e5f3d059a3da939a394e","49":"d5c8e7ffb4d5372252bb","50":"d064a79c0244a9cff8b7","51":"997fd39064fd436abfe0","52":"5e1b000baffbd394c288","53":"f98070f6c5b2382cb163","54":"18b2c3e1288e31596977","55":"23be8fb2545d3c82eda8","56":"fef4b674f5c9c67de492","57":"2f9255215488e183e279","58":"57aedebd7366a2a94274","59":"09239659d741835e0574","60":"5df871633ef479b0e40b","61":"67b3a5dfbaf31f241698","62":"5c8acb1d69b0247d8680","63":"b44d4ef07d3a263c244f","64":"83b918991c47d53a608f","65":"e7328ce487a3e024d9aa","66":"bb9928ac5fc41713ddad","67":"55851b142faa73f72044","404":"fdd90647aa54964fb1ed","account_password":"e80bbb197cad5fe3d04b","api_token":"455796411755cc9d240f","authorized_application":"87b6b5bc246c480c716e","cashier_password":"40a473d15da490ee7be5","contract":"af226726d6528895af2f","financial_assessment":"f2b2875bd22a7717c1ad","limits":"b108abb5bcd4b46ba7b5","login_history":"dcb5548da21ab243acf1","open_positions~portfolio~profit_table~statement":"0c2c33d3387a4325c5b8","open_positions~profit_table~statement":"86e0d6f95b2850ad029a","open_positions":"69200ab30147a993acbd","profit_table~statement":"4aec62dc42e012780ae0","profit_table":"006beb981d761e998fb6","statement":"33e011c4b3af4b426034","portfolio":"2ba844396df077541ab1","personal_details":"3f27d12d238da8ef9393","reports":"06693c5e0cd110ea900d","self_exclusion":"7b24d88cd6b9f04ae3d0","settings":"ee411577a3c3a94f2f4e","vendors~smart_chart":"36579b723fce638aaabb","smart_chart":"984f4dd56c53c88f3e8c"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -3964,12 +3964,12 @@ var FullPageModal = function (_React$Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = FullPageModal.__proto__ || Object.getPrototypeOf(FullPageModal)).call.apply(_ref, [this].concat(args))), _this), _this.handleCancel = function () {
             if (_this.props.is_closed_on_cancel) {
-                _this.props.hideAppBlur();
+                _this.props.hideFullBlur();
             }
             _this.props.onCancel();
         }, _this.handleConfirm = function () {
             if (_this.props.is_closed_on_confirm) {
-                _this.props.hideAppBlur();
+                _this.props.hideFullBlur();
             }
             _this.props.onConfirm();
         }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -3979,14 +3979,14 @@ var FullPageModal = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             if (this.props.is_visible) {
-                this.props.showAppBlur();
+                this.props.showFullBlur();
             }
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
             if (this.props.is_visible) {
-                this.props.showAppBlur();
+                this.props.showFullBlur();
             }
         }
     }, {
@@ -4059,23 +4059,23 @@ FullPageModal.defaultProps = {
 FullPageModal.propTypes = {
     cancel_button_text: _propTypes2.default.string,
     confirm_button_text: _propTypes2.default.string,
-    hideAppBlur: _propTypes2.default.func,
+    hideFullBlur: _propTypes2.default.func,
     is_closed_on_cancel: _propTypes2.default.bool,
     is_closed_on_confirm: _propTypes2.default.bool,
     is_loading: _propTypes2.default.bool,
     is_visible: _propTypes2.default.bool,
     onCancel: _propTypes2.default.func,
     onConfirm: _propTypes2.default.func,
-    showAppBlur: _propTypes2.default.func,
+    showFullBlur: _propTypes2.default.func,
     title: _propTypes2.default.string
 };
 
 var full_page_modal = (0, _connect.connect)(function (_ref2) {
     var ui = _ref2.ui;
     return {
-        hideAppBlur: ui.hideAppBlur,
+        hideFullBlur: ui.hideFullBlur,
         is_loading: ui.is_loading,
-        showAppBlur: ui.showAppBlur
+        showFullBlur: ui.showFullBlur
     };
 })(FullPageModal);
 exports.default = full_page_modal;
@@ -22549,14 +22549,6 @@ var client_notifications = {
         }),
         type: 'info'
     },
-    document_review: {
-        header: (0, _localize.localize)('Documents in review'),
-        message: _react2.default.createElement(_localize3.default, {
-            str: 'We are reviewing your documents. For more details [_1]contact us[_2].',
-            replacers: { '1_2': _react2.default.createElement('a', { className: 'link link--white', target: '_blank', href: (0, _url.urlFor)('contact', undefined, undefined, true) }) }
-        }),
-        type: 'info'
-    },
     cashier_locked: {
         header: (0, _localize.localize)('Cashier Disabled'),
         message: (0, _localize.localize)('Deposits and withdrawals have been disabled on your account. Please check your email for more details.'),
@@ -22699,7 +22691,6 @@ var checkAccountStatus = function checkAccountStatus(response, client, addNotifi
 
     var is_mf_retail = client.landing_company_shortcode === 'maltainvest' && !professional;
 
-    if (document_under_review) addNotification(client_notifications.document_review);
     if (cashier_locked) addNotification(client_notifications.cashier_locked);
     if (withdrawal_locked) addNotification(client_notifications.withdrawal_locked);
     if (mt5_withdrawal_locked) addNotification(client_notifications.mt5_withdrawal_locked);
@@ -22712,7 +22703,7 @@ var checkAccountStatus = function checkAccountStatus(response, client, addNotifi
     if ((0, _client_base.getRiskAssessment)()) addNotification(client_notifications.risk);
     if ((0, _client_base.shouldCompleteTax)()) addNotification(client_notifications.tax);
 
-    if (prompt_client_to_authenticate && !(document_under_review || document_needs_action)) {
+    if (+prompt_client_to_authenticate && !(document_under_review || document_needs_action)) {
         addNotification(client_notifications.authenticate);
     }
 
@@ -23689,6 +23680,7 @@ var ContractStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec
             this.is_ongoing_contract = false;
             this.sell_info = {};
 
+            if (!this.smart_chart) this.smart_chart = this.root_store.modules.smart_chart;
             this.smart_chart.cleanupContractChartView();
             this.smart_chart.applySavedTradeChartLayout();
             _Services.WS.forgetAll('proposal').then(this.root_store.modules.trade.requestProposal());
@@ -24624,14 +24616,35 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
     initializer: function initializer() {
         var _this4 = this;
 
-        return function () {
-            if (!_this4.root_store.client.is_logged_in) return;
-            _this4.is_loading = true;
+        return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                    switch (_context2.prev = _context2.next) {
+                        case 0:
+                            if (_this4.root_store.client.is_logged_in) {
+                                _context2.next = 2;
+                                break;
+                            }
 
-            _Services.WS.portfolio().then(_this4.portfolioHandler);
-            _Services.WS.subscribeProposalOpenContract(null, _this4.proposalOpenContractHandler, false);
-            _Services.WS.subscribeTransaction(_this4.transactionHandler, false);
-        };
+                            return _context2.abrupt('return');
+
+                        case 2:
+                            _this4.is_loading = true;
+                            _context2.next = 5;
+                            return _this4.waitFor('authorize');
+
+                        case 5:
+                            _Services.WS.portfolio().then(_this4.portfolioHandler);
+                            _Services.WS.subscribeProposalOpenContract(null, _this4.proposalOpenContractHandler, false);
+                            _Services.WS.subscribeTransaction(_this4.transactionHandler, false);
+
+                        case 8:
+                        case 'end':
+                            return _context2.stop();
+                    }
+                }
+            }, _callee2, _this4);
+        }));
     }
 }), _applyDecoratedDescriptor(_class.prototype, 'clearTable', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'clearTable'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'portfolioHandler', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'portfolioHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'transactionHandler', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'transactionHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'proposalOpenContractHandler', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'proposalOpenContractHandler'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onClickSell', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'onClickSell'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleSell', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'handleSell'), _class.prototype), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, 'populateResultDetails', [_dec8], {
     enumerable: true,
@@ -24663,6 +24676,13 @@ var PortfolioStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
             if ((0, _logic.isUserSold)(contract_response)) _this5.positions[i].exit_spot = '-';
 
             _this5.positions[i].is_loading = false;
+
+            if ((0, _logic.isEnded)(contract_response)) {
+                // also forget for buy
+                [_this5.populateResultDetails, _this5.proposalOpenContractHandler].forEach(function (cb) {
+                    _Services.WS.forget('proposal_open_contract', cb, { contract_id: contract_response.contract_id });
+                });
+            }
         };
     }
 }), _applyDecoratedDescriptor(_class.prototype, 'pushNewPosition', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'pushNewPosition'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'removePositionById', [_dec10], Object.getOwnPropertyDescriptor(_class.prototype, 'removePositionById'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'accountSwitcherListener', [_dec11], Object.getOwnPropertyDescriptor(_class.prototype, 'accountSwitcherListener'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec12], Object.getOwnPropertyDescriptor(_class.prototype, 'onMount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec13], Object.getOwnPropertyDescriptor(_class.prototype, 'onUnmount'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'totals', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'totals'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'active_positions_totals', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'active_positions_totals'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'active_positions', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'active_positions'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'all_positions', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'all_positions'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'is_active_empty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'is_active_empty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'is_empty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'is_empty'), _class.prototype)), _class));
@@ -24988,9 +25008,13 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
                                 this.assertHasValidCache(this.client_loginid, this.clearDateFilter, this.clearTable, _Services.WS.forgetAll.bind(null, 'proposal'));
                                 this.client_loginid = this.root_store.client.loginid;
                                 this.onSwitchAccount(this.accountSwitcherListener);
+                                _context2.next = 5;
+                                return this.waitFor('authorize');
+
+                            case 5:
                                 this.fetchNextBatch(true);
 
-                            case 4:
+                            case 6:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -25625,7 +25649,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22;
 
 var _extend2 = __webpack_require__(/*! extend */ "./node_modules/extend/index.js");
 
@@ -25718,7 +25742,7 @@ var SmartChartStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _d
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SmartChartStore.__proto__ || Object.getPrototypeOf(SmartChartStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'chart_type', _descriptor, _this), _initDefineProp(_this, 'granularity', _descriptor2, _this), _initDefineProp(_this, 'barriers', _descriptor3, _this), _initDefineProp(_this, 'markers', _descriptor4, _this), _this.barriers_empty_array = [], _this.markers_empty_array = [], _initDefineProp(_this, 'is_contract_mode', _descriptor5, _this), _initDefineProp(_this, 'is_static_chart', _descriptor6, _this), _initDefineProp(_this, 'is_title_enabled', _descriptor7, _this), _initDefineProp(_this, 'start_epoch', _descriptor8, _this), _initDefineProp(_this, 'end_epoch', _descriptor9, _this), _initDefineProp(_this, 'margin', _descriptor10, _this), _initDefineProp(_this, 'scroll_to_left_epoch', _descriptor11, _this), _initDefineProp(_this, 'scroll_to_left_epoch_offset', _descriptor12, _this), _initDefineProp(_this, 'chart_id', _descriptor13, _this), _initDefineProp(_this, 'replay_id', _descriptor14, _this), _initDefineProp(_this, 'is_chart_loading', _descriptor15, _this), _initDefineProp(_this, 'is_chart_ready', _descriptor16, _this), _initDefineProp(_this, 'should_import_layout', _descriptor17, _this), _initDefineProp(_this, 'should_export_layout', _descriptor18, _this), _initDefineProp(_this, 'should_clear_chart', _descriptor19, _this), _initDefineProp(_this, 'trade_chart_layout', _descriptor20, _this), _this.trade_chart_symbol = null, _initDefineProp(_this, 'onMount', _descriptor21, _this), _initDefineProp(_this, 'onUnmount', _descriptor22, _this), _initDefineProp(_this, 'createBarriers', _descriptor23, _this), _this.wsSubscribe = function (request_object, callback) {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SmartChartStore.__proto__ || Object.getPrototypeOf(SmartChartStore)).call.apply(_ref, [this].concat(args))), _this), _initDefineProp(_this, 'chart_type', _descriptor, _this), _initDefineProp(_this, 'granularity', _descriptor2, _this), _initDefineProp(_this, 'barriers', _descriptor3, _this), _initDefineProp(_this, 'markers', _descriptor4, _this), _this.barriers_empty_array = [], _this.markers_empty_array = [], _initDefineProp(_this, 'is_contract_mode', _descriptor5, _this), _initDefineProp(_this, 'is_static_chart', _descriptor6, _this), _initDefineProp(_this, 'is_title_enabled', _descriptor7, _this), _initDefineProp(_this, 'start_epoch', _descriptor8, _this), _initDefineProp(_this, 'end_epoch', _descriptor9, _this), _initDefineProp(_this, 'margin', _descriptor10, _this), _initDefineProp(_this, 'scroll_to_left_epoch', _descriptor11, _this), _initDefineProp(_this, 'scroll_to_left_epoch_offset', _descriptor12, _this), _initDefineProp(_this, 'chart_id', _descriptor13, _this), _initDefineProp(_this, 'is_chart_loading', _descriptor14, _this), _initDefineProp(_this, 'is_chart_ready', _descriptor15, _this), _initDefineProp(_this, 'should_import_layout', _descriptor16, _this), _initDefineProp(_this, 'should_export_layout', _descriptor17, _this), _initDefineProp(_this, 'should_clear_chart', _descriptor18, _this), _initDefineProp(_this, 'trade_chart_layout', _descriptor19, _this), _this.trade_chart_symbol = null, _initDefineProp(_this, 'onMount', _descriptor20, _this), _initDefineProp(_this, 'onUnmount', _descriptor21, _this), _initDefineProp(_this, 'createBarriers', _descriptor22, _this), _this.wsSubscribe = function (request_object, callback) {
             if (request_object.subscribe !== 1) return;
             _Services.WS.subscribeTicksHistory(_extends({}, request_object), callback); // use a copy of the request_object to prevent updating the source
         }, _this.wsForget = function (match_values, callback) {
@@ -26060,42 +26084,37 @@ var SmartChartStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _d
     initializer: function initializer() {
         return 'trade';
     }
-}), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, 'replay_id', [_mobx.observable], {
-    enumerable: true,
-    initializer: function initializer() {
-        return 'contract-replay';
-    }
-}), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, 'is_chart_loading', [_mobx.observable], {
+}), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, 'is_chart_loading', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return false;
     }
-}), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, 'is_chart_ready', [_mobx.observable], {
+}), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, 'is_chart_ready', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return false;
     }
-}), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, 'should_import_layout', [_mobx.observable], {
+}), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, 'should_import_layout', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return false;
     }
-}), _descriptor18 = _applyDecoratedDescriptor(_class.prototype, 'should_export_layout', [_mobx.observable], {
+}), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, 'should_export_layout', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return false;
     }
-}), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, 'should_clear_chart', [_mobx.observable], {
+}), _descriptor18 = _applyDecoratedDescriptor(_class.prototype, 'should_clear_chart', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return false;
     }
-}), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, 'trade_chart_layout', [_mobx.observable], {
+}), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, 'trade_chart_layout', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return null;
     }
-}), _applyDecoratedDescriptor(_class.prototype, 'switchToContractMode', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'switchToContractMode'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'getChartStatus', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'getChartStatus'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateChartType', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'updateChartType'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateGranularity', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'updateGranularity'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateMargin', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'updateMargin'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateEpochScrollToValue', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'updateEpochScrollToValue'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateEpochScrollToOffset', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'updateEpochScrollToOffset'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'cleanupContractChartView', [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, 'cleanupContractChartView'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'resetScrollToLeft', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'resetScrollToLeft'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setContractMode', [_dec10], Object.getOwnPropertyDescriptor(_class.prototype, 'setContractMode'), _class.prototype), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec11], {
+}), _applyDecoratedDescriptor(_class.prototype, 'switchToContractMode', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'switchToContractMode'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'getChartStatus', [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, 'getChartStatus'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateChartType', [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, 'updateChartType'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateGranularity', [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, 'updateGranularity'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateMargin', [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, 'updateMargin'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateEpochScrollToValue', [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, 'updateEpochScrollToValue'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'updateEpochScrollToOffset', [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, 'updateEpochScrollToOffset'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'cleanupContractChartView', [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, 'cleanupContractChartView'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'resetScrollToLeft', [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, 'resetScrollToLeft'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setContractMode', [_dec10], Object.getOwnPropertyDescriptor(_class.prototype, 'setContractMode'), _class.prototype), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, 'onMount', [_dec11], {
     enumerable: true,
     initializer: function initializer() {
         var _this4 = this;
@@ -26107,7 +26126,7 @@ var SmartChartStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _d
             }
         };
     }
-}), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec12], {
+}), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, 'onUnmount', [_dec12], {
     enumerable: true,
     initializer: function initializer() {
         var _this5 = this;
@@ -26120,7 +26139,7 @@ var SmartChartStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _d
             _this5.cleanupContractChartView();
         };
     }
-}), _applyDecoratedDescriptor(_class.prototype, 'setChartView', [_dec13], Object.getOwnPropertyDescriptor(_class.prototype, 'setChartView'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setContractStart', [_dec14], Object.getOwnPropertyDescriptor(_class.prototype, 'setContractStart'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setContractEnd', [_dec15], Object.getOwnPropertyDescriptor(_class.prototype, 'setContractEnd'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setIsChartLoading', [_dec16], Object.getOwnPropertyDescriptor(_class.prototype, 'setIsChartLoading'), _class.prototype), _descriptor23 = _applyDecoratedDescriptor(_class.prototype, 'createBarriers', [_dec17], {
+}), _applyDecoratedDescriptor(_class.prototype, 'setChartView', [_dec13], Object.getOwnPropertyDescriptor(_class.prototype, 'setChartView'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setContractStart', [_dec14], Object.getOwnPropertyDescriptor(_class.prototype, 'setContractStart'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setContractEnd', [_dec15], Object.getOwnPropertyDescriptor(_class.prototype, 'setContractEnd'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setIsChartLoading', [_dec16], Object.getOwnPropertyDescriptor(_class.prototype, 'setIsChartLoading'), _class.prototype), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, 'createBarriers', [_dec17], {
     enumerable: true,
     initializer: function initializer() {
         var _this6 = this;
@@ -26458,9 +26477,13 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
                                 this.assertHasValidCache(this.client_loginid, this.clearDateFilter, this.clearTable, _Services.WS.forgetAll.bind(null, 'proposal'));
                                 this.client_loginid = this.root_store.client.loginid;
                                 this.onSwitchAccount(this.accountSwitcherListener);
+                                _context2.next = 5;
+                                return this.waitFor('authorize');
+
+                            case 5:
                                 this.fetchNextBatch(true);
 
-                            case 4:
+                            case 6:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -29371,7 +29394,7 @@ var TradeStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 =
                     switch (_context9.prev = _context9.next) {
                         case 0:
                             _context9.next = 2;
-                            return _socket_base2.default.wait('website_status');
+                            return _socket_base2.default.wait('authorize', 'website_status');
 
                         case 2:
                             (0, _mobx.action)(_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
@@ -29506,6 +29529,10 @@ var _dec, _dec2, _dec3, _dec4, _desc, _value, _class, _descriptor, _descriptor2,
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
+var _socket_base = __webpack_require__(/*! ../../_common/base/socket_base */ "./src/javascript/_common/base/socket_base.js");
+
+var _socket_base2 = _interopRequireDefault(_socket_base);
+
 var _utility = __webpack_require__(/*! ../../_common/utility */ "./src/javascript/_common/utility.js");
 
 var _Validator = __webpack_require__(/*! ../Utils/Validator */ "./src/javascript/app/Utils/Validator/index.js");
@@ -29516,9 +29543,9 @@ var _config = __webpack_require__(/*! ../../config */ "./src/javascript/config.j
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -29588,6 +29615,8 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
      * An enum object to define LOCAL_STORAGE and SESSION_STORAGE
      */
     function BaseStore() {
+        var _this = this;
+
         var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
         _classCallCheck(this, BaseStore);
@@ -29600,6 +29629,29 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
         this.switch_account_listener = null;
 
         _initDefineProp(this, 'partial_fetch_time', _descriptor3, this);
+
+        this.waitFor = function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var _args = arguments;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _socket_base2.default.wait.apply(_socket_base2.default, _args);
+
+                            case 2:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this);
+            }));
+
+            return function () {
+                return _ref.apply(this, arguments);
+            };
+        }();
 
         var root_store = options.root_store,
             local_storage_properties = options.local_storage_properties,
@@ -29681,15 +29733,15 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'setupReactionForLocalStorage',
         value: function setupReactionForLocalStorage() {
-            var _this = this;
+            var _this2 = this;
 
             if (this.local_storage_properties.length) {
                 (0, _mobx.reaction)(function () {
-                    return _this.local_storage_properties.map(function (i) {
-                        return _this[i];
+                    return _this2.local_storage_properties.map(function (i) {
+                        return _this2[i];
                     });
                 }, function () {
-                    return _this.saveToStorage(_this.local_storage_properties, BaseStore.STORAGES.LOCAL_STORAGE);
+                    return _this2.saveToStorage(_this2.local_storage_properties, BaseStore.STORAGES.LOCAL_STORAGE);
                 });
             }
         }
@@ -29703,15 +29755,15 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'setupReactionForSessionStorage',
         value: function setupReactionForSessionStorage() {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.session_storage_properties.length) {
                 (0, _mobx.reaction)(function () {
-                    return _this2.session_storage_properties.map(function (i) {
-                        return _this2[i];
+                    return _this3.session_storage_properties.map(function (i) {
+                        return _this3[i];
                     });
                 }, function () {
-                    return _this2.saveToStorage(_this2.session_storage_properties, BaseStore.STORAGES.SESSION_STORAGE);
+                    return _this3.saveToStorage(_this3.session_storage_properties, BaseStore.STORAGES.SESSION_STORAGE);
                 });
             }
         }
@@ -29747,7 +29799,7 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'retrieveFromStorage',
         value: function retrieveFromStorage() {
-            var _this3 = this;
+            var _this4 = this;
 
             var local_storage_snapshot = JSON.parse(localStorage.getItem(this.store_name, {}));
             var session_storage_snapshot = JSON.parse(sessionStorage.getItem(this.store_name, {}));
@@ -29755,7 +29807,7 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
             var snapshot = _extends({}, local_storage_snapshot, session_storage_snapshot);
 
             Object.keys(snapshot).forEach(function (k) {
-                return _this3[k] = snapshot[k];
+                return _this4[k] = snapshot[k];
             });
         }
 
@@ -29770,13 +29822,13 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'setValidationErrorMessages',
         value: function setValidationErrorMessages(propertyName, messages) {
-            var _this4 = this;
+            var _this5 = this;
 
             var is_different = function is_different() {
-                return !!_this4.validation_errors[propertyName].filter(function (x) {
+                return !!_this5.validation_errors[propertyName].filter(function (x) {
                     return !messages.includes(x);
                 }).concat(messages.filter(function (x) {
-                    return !_this4.validation_errors[propertyName].includes(x);
+                    return !_this5.validation_errors[propertyName].includes(x);
                 })).length;
             };
             if (!this.validation_errors[propertyName] || is_different()) {
@@ -29794,12 +29846,12 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'setValidationRules',
         value: function setValidationRules() {
-            var _this5 = this;
+            var _this6 = this;
 
             var rules = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
             Object.keys(rules).forEach(function (key) {
-                _this5.addRule(key, rules[key]);
+                _this6.addRule(key, rules[key]);
             });
         }
 
@@ -29814,12 +29866,12 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'addRule',
         value: function addRule(property, rules) {
-            var _this6 = this;
+            var _this7 = this;
 
             this.validation_rules[property] = rules;
 
             (0, _mobx.intercept)(this, property, function (change) {
-                _this6.validateProperty(property, change.newValue);
+                _this7.validateProperty(property, change.newValue);
                 return change;
             });
         }
@@ -29835,7 +29887,7 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'validateProperty',
         value: function validateProperty(property, value) {
-            var _this7 = this;
+            var _this8 = this;
 
             var trigger = this.validation_rules[property].trigger;
             var inputs = _defineProperty({}, property, value !== undefined ? value : this[property]);
@@ -29851,7 +29903,7 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
             validator.isPassed();
 
             Object.keys(inputs).forEach(function (key) {
-                _this7.setValidationErrorMessages(key, validator.errors.get(key));
+                _this8.setValidationErrorMessages(key, validator.errors.get(key));
             });
         }
 
@@ -29863,73 +29915,73 @@ var BaseStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = 
     }, {
         key: 'validateAllProperties',
         value: function validateAllProperties() {
-            var _this8 = this;
+            var _this9 = this;
 
             var validation_rules = Object.keys(this.validation_rules);
             var validation_errors = Object.keys(this.validation_errors);
 
             validation_rules.forEach(function (p) {
-                _this8.validateProperty(p, _this8[p]);
+                _this9.validateProperty(p, _this9[p]);
             });
 
             // Remove keys that are present in error, but not in rules:
             validation_errors.forEach(function (error) {
                 if (!validation_rules.includes(error)) {
-                    delete _this8.validation_errors[error];
+                    delete _this9.validation_errors[error];
                 }
             });
         }
     }, {
         key: 'onSwitchAccount',
         value: function onSwitchAccount(listener) {
-            var _this9 = this;
+            var _this10 = this;
 
             this.switchAccountDisposer = (0, _mobx.when)(function () {
-                return _this9.root_store.client.switch_broadcast;
-            }, _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                return _this10.root_store.client.switch_broadcast;
+            }, _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 var result;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
+                return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
-                        switch (_context.prev = _context.next) {
+                        switch (_context2.prev = _context2.next) {
                             case 0:
-                                _context.prev = 0;
-                                result = _this9.switch_account_listener();
+                                _context2.prev = 0;
+                                result = _this10.switch_account_listener();
 
                                 if (!(result && result.then && typeof result.then === 'function')) {
-                                    _context.next = 6;
+                                    _context2.next = 6;
                                     break;
                                 }
 
                                 result.then(function () {
-                                    _this9.root_store.client.switchEndSignal();
-                                    _this9.onSwitchAccount(_this9.switch_account_listener);
+                                    _this10.root_store.client.switchEndSignal();
+                                    _this10.onSwitchAccount(_this10.switch_account_listener);
                                 });
-                                _context.next = 7;
+                                _context2.next = 7;
                                 break;
 
                             case 6:
                                 throw new Error('Switching account listeners are required to return a promise.');
 
                             case 7:
-                                _context.next = 12;
+                                _context2.next = 12;
                                 break;
 
                             case 9:
-                                _context.prev = 9;
-                                _context.t0 = _context['catch'](0);
+                                _context2.prev = 9;
+                                _context2.t0 = _context2['catch'](0);
 
                                 // there is no listener currently active. so we can just ignore the error raised from treating
                                 // a null object as a function. Although, in development mode, we throw a console error.
                                 if (!(0, _config.isProduction)()) {
-                                    console.error(_context.t0); // eslint-disable-line
+                                    console.error(_context2.t0); // eslint-disable-line
                                 }
 
                             case 12:
                             case 'end':
-                                return _context.stop();
+                                return _context2.stop();
                         }
                     }
-                }, _callee, _this9, [[0, 9]]);
+                }, _callee2, _this10, [[0, 9]]);
             })));
             this.switch_account_listener = listener;
         }
@@ -32869,8 +32921,6 @@ __webpack_require__(/*! babel-polyfill */ "./node_modules/babel-polyfill/lib/ind
 
 __webpack_require__(/*! promise-polyfill */ "./node_modules/promise-polyfill/promise.js");
 
-var _check_new_release = __webpack_require__(/*! ../_common/check_new_release */ "./src/javascript/_common/check_new_release.js");
-
 var _app = __webpack_require__(/*! ./App/app */ "./src/javascript/app/App/app.js");
 
 var _app2 = _interopRequireDefault(_app);
@@ -32880,8 +32930,6 @@ var _pwa = __webpack_require__(/*! ./Utils/pwa */ "./src/javascript/app/Utils/pw
 var _pwa2 = _interopRequireDefault(_pwa);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.check_new_release = _check_new_release.checkNewRelease; // used by GTM to update page after a new release
 
 (0, _pwa2.default)();
 (0, _app2.default)();
@@ -32929,7 +32977,7 @@ var binary_desktop_app_id = 14473;
 
 var getAppId = function getAppId() {
     var app_id = null;
-    var user_app_id = ''; // you can insert Application ID of your registered application here
+    var user_app_id = '17036'; // you can insert Application ID of your registered application here
     var config_app_id = window.localStorage.getItem('config.app_id');
     if (config_app_id) {
         app_id = config_app_id;
