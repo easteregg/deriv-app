@@ -24893,7 +24893,7 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
         value: function shouldFetchNextBatch(should_load_partially) {
             if (!should_load_partially && (this.has_loaded_all || this.is_loading)) return false;
             var today = (0, _Date.toMoment)().startOf('day').add(1, 'd').subtract(1, 's').unix();
-            if (this.date_to && this.date_to < today) return !should_load_partially;
+            if (this.date_to < today) return should_load_partially;
             return true;
         }
     }, {
@@ -25032,7 +25032,7 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
         key: 'clearDateFilter',
         value: function clearDateFilter() {
             this.date_from = 0;
-            this.date_to = 0;
+            this.date_to = (0, _Date.toMoment)().startOf('day').add(1, 'd').subtract(1, 's').unix();
             this.partial_fetch_time = false;
         }
     }, {
@@ -25098,7 +25098,7 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
 }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'date_to', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
-        return 0;
+        return (0, _Date.toMoment)().startOf('day').add(1, 'd').subtract(1, 's').unix();
     }
 }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'error', [_mobx.observable], {
     enumerable: true,
@@ -26334,14 +26334,14 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
         key: 'clearDateFilter',
         value: function clearDateFilter() {
             this.date_from = 0;
-            this.date_to = 0;
+            this.date_to = (0, _Date.toMoment)().startOf('day').add(1, 'd').subtract(1, 's').unix();
         }
     }, {
         key: 'shouldFetchNextBatch',
         value: function shouldFetchNextBatch(should_load_partially) {
             if (!should_load_partially && (this.has_loaded_all || this.is_loading)) return false;
             var today = (0, _Date.toMoment)().startOf('day').add(1, 'd').subtract(1, 's').unix();
-            if (this.date_to && this.date_to < today) return !should_load_partially;
+            if (this.date_to < today) return should_load_partially;
             return true;
         }
     }, {
@@ -26516,7 +26516,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
 }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, 'date_to', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
-        return 0;
+        return (0, _Date.toMoment)().startOf('day').add(1, 'd').subtract(1, 's').unix();
     }
 }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, 'error', [_mobx.observable], {
     enumerable: true,
