@@ -24689,7 +24689,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _Date = __webpack_require__(/*! ../../../../Utils/Date */ "./src/javascript/app/Utils/Date/index.js");
 
 var getDateTo = function getDateTo(partial_fetch_time, date_to) {
-    if (partial_fetch_time) {
+    var today = (0, _Date.toMoment)().startOf('day').unix();
+    if (date_to && today > date_to) {
+        return (0, _Date.epochToMoment)(date_to).add(1, 'd').subtract(1, 's').unix();
+    } else if (partial_fetch_time) {
         return (0, _Date.toMoment)().endOf('day').unix();
     } else if (date_to) {
         return (0, _Date.epochToMoment)(date_to).add(1, 'd').subtract(1, 's').unix();
@@ -24697,13 +24700,17 @@ var getDateTo = function getDateTo(partial_fetch_time, date_to) {
     return (0, _Date.toMoment)().endOf('day').unix();
 };
 
-var getDateFrom = function getDateFrom(should_load_partially, partial_fetch_time, date_from) {
+var getDateFrom = function getDateFrom(should_load_partially, partial_fetch_time, date_from, date_to) {
+    var today = (0, _Date.toMoment)().startOf('day').unix();
+    if (today > date_to) {
+        return date_from;
+    }
     return should_load_partially && partial_fetch_time ? partial_fetch_time : date_from;
 };
 
 var getDateBoundaries = function getDateBoundaries(date_from, date_to, partial_fetch_time) {
     var should_load_partially = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-    return _extends({}, (date_from || should_load_partially) && { date_from: getDateFrom(should_load_partially, partial_fetch_time, date_from) }, (date_to || should_load_partially) && { date_to: getDateTo(partial_fetch_time, date_to) });
+    return _extends({}, (date_from || should_load_partially) && { date_from: getDateFrom(should_load_partially, partial_fetch_time, date_from, date_to) }, (date_to || should_load_partially) && { date_to: getDateTo(partial_fetch_time, date_to) });
 };
 
 exports.default = getDateBoundaries;
@@ -24884,6 +24891,14 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
 
 
     _createClass(ProfitTableStore, [{
+        key: 'shouldFetchNextBatch',
+        value: function shouldFetchNextBatch(should_load_partially) {
+            if (!should_load_partially && (this.has_loaded_all || this.is_loading)) return false;
+            var today = (0, _Date.toMoment)().startOf('day');
+            if (should_load_partially && this.date_to && this.date_to < today) return false;
+            return true;
+        }
+    }, {
         key: 'fetchNextBatch',
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -24893,7 +24908,7 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                if (!(!should_load_partially && (this.has_loaded_all || this.is_loading))) {
+                                if (this.shouldFetchNextBatch(should_load_partially)) {
                                     _context.next = 2;
                                     break;
                                 }
@@ -26326,6 +26341,14 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
             this.date_to = 0;
         }
     }, {
+        key: 'shouldFetchNextBatch',
+        value: function shouldFetchNextBatch(should_load_partially) {
+            if (!should_load_partially && (this.has_loaded_all || this.is_loading)) return false;
+            var today = (0, _Date.toMoment)().startOf('day');
+            if (should_load_partially && this.date_to && this.date_to < today) return false;
+            return true;
+        }
+    }, {
         key: 'fetchNextBatch',
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -26335,7 +26358,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                if (!(!should_load_partially && (this.has_loaded_all || this.is_loading))) {
+                                if (this.shouldFetchNextBatch(should_load_partially)) {
                                     _context.next = 2;
                                     break;
                                 }
@@ -32912,7 +32935,7 @@ var binary_desktop_app_id = 14473;
 
 var getAppId = function getAppId() {
     var app_id = null;
-    var user_app_id = ''; // you can insert Application ID of your registered application here
+    var user_app_id = '17036'; // you can insert Application ID of your registered application here
     var config_app_id = window.localStorage.getItem('config.app_id');
     if (config_app_id) {
         app_id = config_app_id;
