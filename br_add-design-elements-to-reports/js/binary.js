@@ -24982,7 +24982,7 @@ var ProfitTableStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _
             }
             this.has_loaded_all = !should_load_partially && formatted_transactions.length < batch_size;
             this.is_loading = false;
-            if (this.data.length > 0) {
+            if (formatted_transactions.length > 0) {
                 this.partial_fetch_time = (0, _Date.toMoment)().unix();
             }
         }
@@ -26426,7 +26426,7 @@ var StatementStore = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _de
             }
             this.has_loaded_all = !should_load_partially && formatted_transactions.length < batch_size;
             this.is_loading = false;
-            if (this.data.length > 0) {
+            if (formatted_transactions.length > 0) {
                 this.partial_fetch_time = (0, _Date.toMoment)().unix();
             }
         }
