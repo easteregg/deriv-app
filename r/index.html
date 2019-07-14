@@ -34,21 +34,6 @@
         })(window,document.documentElement,'async-hide','dataLayer',4000,{'GTM-NF7884S':true});
     </script>
     <!-- End GTM Script -->
-    <!-- Register the PerformanceObserver to track paint timing. -->
-    <script>
-        const observer = new PerformanceObserver((list) => {
-            for (const entry of list.getEntries()) {
-                // `name` will be either 'first-paint' or 'first-contentful-paint'.
-                const metricName = entry.name;
-                const time = Math.round(entry.startTime + entry.duration);
-                console.debug('Performance Metrics:', {
-                    name: metricName,
-                    time,
-                });
-            }
-        });
-        observer.observe({entryTypes: ['paint']});
-</script>
 
     <!-- Start URL Handler -->
     <script type="text/javascript">
@@ -110,5 +95,5 @@
     </div>
 </div>
 <div id="modal_root" class="modal-root"></div>
-<script type="text/javascript" src="/r/js/main.757840b0f28fa2e81ee0.js"></script></body>
+<script type="text/javascript" src="/r/js/main.14ca6991fd49c679dc86.js"></script></body>
 </html>
